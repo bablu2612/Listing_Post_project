@@ -1,0 +1,2 @@
+module BuyerListingsHelper
+end

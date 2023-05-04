@@ -1,0 +1,83 @@
+<%= form_with(model: buyer_listing, class: "contents") do |form| %>
+  <% if buyer_listing.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(buyer_listing.errors.count, "error") %> prohibited this buyer_listing from being saved:</h2>
+
+      <ul>
+        <% buyer_listing.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form_group flex justify-between gap-[50px]">
+    <div class="mb-4 w-full">
+      <%= form.label :year, class: "block text-gray-700 font-bold" %>
+      <%= form.number_field :year, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
+
+    <div class="mb-4 w-full">
+      <%= form.label :make, class: "block text-gray-700 font-bold" %>
+      <%= form.text_field :make, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
+  </div>
+
+  <div class="form_group flex justify-between gap-[50px]">
+    <div class="mb-4 w-full">
+      <%= form.label :model, class: "block text-gray-700 font-bold" %>
+      <%= form.text_field :model, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
+
+    <div class="mb-4 w-full">
+      <%= form.label :trim, class: "block text-gray-700 font-bold" %>
+      <%= form.text_field :trim, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
+  </div>
+
+  <div class="form_group flex justify-between gap-[50px]">
+    <div class="mb-4 w-full">
+      <%= form.label :mileage, class: "block text-gray-700 font-bold" %>
+      <%= form.text_field :mileage, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
+
+    <div class="mb-4 w-full">
+      <%= form.label :exterior_color, class: "block text-gray-700 font-bold" %>
+      <%= form.text_field :exterior_color, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
+  </div>
+
+  <div class="form_group flex justify-between gap-[50px]">
+    <div class="mb-4 w-full">
+      <%= form.label :interior_color, class: "block text-gray-700 font-bold" %>
+      <%= form.text_field :interior_color, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
+
+    <div class="mb-4 w-full">
+      <%= form.label :transportation, class: "block text-gray-700 font-bold" %>
+      <%= form.text_field :transportation, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
+  </div>
+
+  <div class="form_group flex justify-between gap-[50px]">
+
+    <div class="mb-4 w-full">
+      <%= form.label :departure, class: "block text-gray-700 font-bold" %>
+      <%= form.text_field :departure, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
+
+    <div class="mb-4 w-full">
+      <%= form.label :payment_term, class: "block text-gray-700 font-bold" %>
+      <%= form.text_field :payment_term, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
+  </div>
+
+  <div class="mb-4 w-full">
+    <%= form.label :purchase_price %>
+    <%= form.text_field :purchase_price, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
