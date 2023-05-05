@@ -1,5 +1,5 @@
-<div id="<%= dom_id buyer_listing %>" class="bg-white rounded-lg shadow p-6">
-  <h2 class="text-2xl font-medium mb-6">Buyer Listing</h2>
+<div id="<%= dom_id buyer_listing %>" class="bg-white rounded-lg shadow p-6 mb-2 mt-5">
+  <h2 class="text-2xl font-medium mb-6">Car Details</h2>
   
   <div class="grid grid-cols-2 gap-x-8 gap-y-4">
     <div>
@@ -60,4 +60,34 @@
         <%= buyer_listing.purchase_price %>
       </p>
     </div>
+
+    </div>
+ <div class="car_attachement">
+    <h2 class="text-2xl font-medium mb-6 mt-5">Car Attachements</h2>
+
+    <div class="images flex">
+      <div>    
+      <img class="car_image" width="600" src="<%= asset_url("no_car_image.jpeg") %>">
+      </div>
+
+      <div>    
+      <img class="car_image" src="<%= asset_url("no_car_image.jpeg") %>">
+      </div>
+
+      <div>    
+      <img class="car_image" src="<%= asset_url("no_car_image.jpeg") %>">
+      </div>
+
+    </div>
+
+    <div class="offered_class mt-2">
+    <b>Offered Price:</b>  $12,000
+    </div>
+
+  </div>
+
+</div>
+
+
  
+

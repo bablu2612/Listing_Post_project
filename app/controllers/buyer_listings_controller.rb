@@ -25,7 +25,7 @@ class BuyerListingsController < ApplicationController
 
     respond_to do |format|
       if @buyer_listing.save
-        format.html { redirect_to buyer_listing_url(@buyer_listing), notice: "Buyer listing was successfully created." }
+        format.html { redirect_to buyer_listings_path, notice: "Car Details was successfully Submitted." }
         format.json { render :show, status: :created, location: @buyer_listing }
       else
         format.html { render :new, status: :unprocessable_entity }
