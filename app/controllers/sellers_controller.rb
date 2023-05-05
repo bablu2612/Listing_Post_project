@@ -1,14 +1,14 @@
-class BuyerListingsController < ApplicationController
+class SellersController < ApplicationController
   before_action :set_buyer_listing, only: %i[ show edit update destroy ]
+  skip_before_action :verify_authenticity_token
 
   # GET /buyer_listings or /buyer_listings.json
   def index
-    @buyer_listings = current_user.buyer_listings.all.order(created_at: :desc)
+    @buyer_listings = BuyerListing.all.order(created_at: :desc)
   end
 
   # GET /buyer_listings/1 or /buyer_listings/1.json
   def show
-    @seller_listing = @buyer_listing.seller_listings.find_by(user_id: current_user.id)
   end
 
   # GET /buyer_listings/new
@@ -22,15 +22,16 @@ class BuyerListingsController < ApplicationController
 
   # POST /buyer_listings or /buyer_listings.json
   def create
-    @buyer_listing = current_user.buyer_listings.new(buyer_listing_params)
+    @seller_listing = SellerListing.find_or_initialize_by(user_id: current_user.id)
+    @seller_listing.assign_attributes(files: params[:files], offered_price: params[:offered_price], buyer_listing_id: params[:buyer_listing_id])
 
     respond_to do |format|
-      if @buyer_listing.save
-        format.html { redirect_to buyer_listings_path, notice: "Car Details was successfully Submitted." }
-        format.json { render :show, status: :created, location: @buyer_listing }
+      if @seller_listing.save
+        format.html { redirect_to sellers_path, notice: "Car Attachments was successfully Submitted." }
+        format.json { render :show, status: :created, location: @seller_listing }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @buyer_listing.errors, status: :unprocessable_entity }
+        format.json { render json: @seller_listing.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -1,8 +1,9 @@
 <style>
   .listings_main {
     padding: 8px;
-    max-width: 500px;
-    margin: auto; 
+    max-width: 768px;
+    margin: auto;
+    /* background: #80808000; */
 }
 
 .header_title_main h1 {
@@ -15,7 +16,6 @@
     overflow: hidden;
     border-radius: 10px;
 }
-
 .card_body {
     display: flex;
 }
@@ -23,13 +23,18 @@
 .card_left img.car_image {
     width: 100%;
 }
+
+.card_left {
+    width: 38%;
+}
+
 .card_right_sub .title {
     font-size: 15px;
     font-weight: 600;
 }
 
-.card_right_sub {
-    padding: 15px 25px;
+.card_right_sub{
+  padding: 15px 25px
 }
 
 .desc_sub {
@@ -45,6 +50,12 @@
     padding: 1px 10px;
     font-size: 12px;
     color: #ff4700;
+}
+
+@media (max-width: 767px){
+  .card_right_sub {
+    padding: 15px;
+}
 }
 </style>
 <%= render "layouts/welcome"%>
@@ -65,14 +76,12 @@
 </div>
 
  
-
-
   <div class="listings_sub">
     <% @buyer_listings.each do |buyer_listing| %>
       <div class="card_main w-full mb-2">
         <div class="card_body flex w-full">
           <div class="card_left">
-            <img class="car_image" src="<%= asset_url("no_car_image.jpg") %>">
+            <img class="car_image" src="<%= asset_url("no_car_image.jpeg") %>">
           </div>
           <div class="card_right">
             <div class="card_right_sub">
@@ -82,22 +91,18 @@
                 </div>
                 <div class="desc flex-row gap-2">
                   <div class="desc_sub desc_trim">
-                   <span> Trim: </span> <%= buyer_listing.trim %>  
+                    Trim: <%= buyer_listing.trim %> 
                   </div>
                   <div class=" desc_sub desc_milage">
-                    <span> Mileage:</span>  <%= buyer_listing.mileage %> 
+                    Mileage: <%= buyer_listing.mileage %>
                   </div>
                   <div class="desc_sub">
-                    <span> Departure:</span>  <%= buyer_listing.departure %> 
-                  </div>
-                   <div class="price_main mt-2">
-                   $ <%= buyer_listing.purchase_price %>
+                    Departure: <%= buyer_listing.departure %>
                   </div>
                 </div>
               </div>
-              <div class="loss mt-3">
-              <div class="bottom">  
-                <div class="right flex gap-2">
+              <div class="bottom"> 
+                <div class="right flex gap-2 align-items-center">
                   <div class="icons flex gap-3">
                     <div class="icon_sub">
                       <i class="fa fa-usd" aria-hidden="true"></i>
@@ -105,15 +110,18 @@
                     <div class="icon_sub">
                       <i class="fa fa-car" aria-hidden="true"></i>
                     </div>
-                  </div> 
+                  </div>
+                  <div class="price_main">
+                    <%= buyer_listing.purchase_price %>
+                  </div>
                 </div>
-              </div><div class="card_last_section align-center">
-          <%= link_to "View", buyer_listing_path(buyer_listing.id), method: :get, class: "no-underline relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
-
-         </div></div>
+              </div>
             </div>
           </div>
-          
+          <div class="card_last_section ml-20 align-center mt-5">
+          <%= link_to "View", buyer_listing_path(buyer_listing.id), method: :get, class: "no-underline relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+
+         </div>
 
         </div>
       </div>

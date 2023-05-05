@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :buyer_listings, dependent: :destroy
 
-  enum role:{"admin": "admin", "user": "user","buyer": "buyer", "vendor": "vendor"}
+  enum role:{"admin": "admin","buyer": "buyer", "seller": "seller"}
 
   def name 
     "#{self.first_name} #{self.last_name}"

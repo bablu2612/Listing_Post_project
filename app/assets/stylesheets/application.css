@@ -13,3 +13,72 @@
  *= require_tree .
  *= require_self
  */
+
+ .card_right {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    max-width: calc(100% - 145px);
+}
+
+.card_body.flex {
+    align-items: center;
+}
+ 
+.loss {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.card_right:after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #5f00e817;
+    right: -30px;
+    top: -30px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    z-index: -1;
+} 
+
+.card_left {
+    max-width: 160px;
+    width: 100%;
+    height: 100%;
+}
+
+.card_left img.car_image {
+    height: 100%;
+    object-fit: cover;
+    min-height: 200px;
+}
+
+ 
+.desc>.desc_sub {
+    color: #686868;
+}
+
+.card_right_sub .title {
+    color: #5f00e8;margin-bottom: 5px;
+}
+ 
+.desc>.desc_sub span {
+    font-weight: 600;
+}
+
+.icon_sub {
+    background: #efe4ff;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    width: 40px;
+    height: 40px;
+    display: inline-grid;
+    place-content: center;
+    color: #5f00e8;
+    padding: 0;
+}
+ 
