@@ -4,8 +4,13 @@
   <div class="grid grid-cols-2 gap-x-8 gap-y-4">
     <div>
       <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Year:</strong>
-        <%= buyer_listing.year %>
+        <strong class="block text-gray-600 mb-1">Min Year:</strong>
+        <%= buyer_listing.min_year %>
+      </p>
+
+      <p class="mb-4">
+        <strong class="block text-gray-600 mb-1">Max Year:</strong>
+        <%= buyer_listing.max_year %>
       </p>
 
       <p class="mb-4">
@@ -56,18 +61,24 @@
       </p>
 
       <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Purchase price:</strong>
-        <%= buyer_listing.purchase_price %>
+        <strong class="block text-gray-600 mb-1">Min price:</strong>
+        <%= buyer_listing.min_price %>
       </p>
+
+       <p class="mb-4">
+        <strong class="block text-gray-600 mb-1">Max price:</strong>
+        <%= buyer_listing.max_price %>
+      </p>
+
     </div>
 
     </div>
 <% if current_user.role == "seller" %>
   <div class="car_attachement">
-    <h2 class="text-2xl font-medium mb-6 mt-5">Car Attachements</h2>
+    <h2 class="text-2xl font-medium mb-[0] mt-5">Car Attachements</h2>
     <div class="car_attachment_button_main flex justify-end mb-[10px]">
-      <button class="text-[#0066ff] edit_attachments ">Edit</button>
-      <button class="text-[red] close_attachments hidden">Cancel</button>
+      <button class="text-[#4e4a4a] edit_attachments "><%= @seller_listing&.files.present? ? "Edit" : "Add" %></button>
+      <button class="text-[#4e4a4a] close_attachments hidden">Cancel</button>
     </div>
     <div class="seller_list_form edit_opened hidden">
       <form action="/sellers" method="post" enctype='multipart/form-data'>
@@ -92,26 +103,32 @@
           </div>
           <div class="form_group mt-[15px] mb-[5px] flex  items-center gap-[20px]">
             <label for="offer_price" class="min-w-[95px]" >Offered Price</label>
-            <input type="number" id="offer_price" name="offered_price" class="rounded">
+            <input type="number" id="offer_price" name="offered_price" value="<%= @seller_listing&.offered_price %>" class="rounded">
           </div>
 
           <div class="submit_form mt-4">
-            <button type="submit" class="w-full text-center no-underline relative items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
+            <button type="submit" class="w-full text-center no-underline relative items-center rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
           </div>
         </div>
       </form>
     </div>
 
-    <div class="flex attached_files_main mt-[20px] gap-[10px] edit_closed flex-wrap justify-center">
-      <% @seller_listing.files.each do |image| %>
-        <div class="w-[48%] " style="border: 1px solid #80808085;">    
-          <img class="car_image" width="600" style="height: 110px; object-fit: cover" src="<%= url_for(image) %>">
-        </div>
-      <% end %>
-    </div>
+    <% if @seller_listing&.files.present? %>
+      <div class="flex attached_files_main mt-[10px] gap-[10px] edit_closed flex-wrap justify-center">
+        <% @seller_listing&.files&.each do |image| %>
+          <div class="w-[48%] " style="border: 1px solid #80808085;">    
+            <img class="car_image" width="600" style="height: 110px; object-fit: cover" src="<%= url_for(image) %>">
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="flex attached_files_main mt-[10px] gap-[10px] edit_closed flex-wrap justify-center mb-[15px] bg-[#80808047] text-[#000] rounded p-[30px] mt-[-8px]" style="border:1px dashed #80808073">
+        No Attachements Found
+      </div>
+    <% end %>
 
     <div class="offered_class mt-2">
-    <b>Offered Price:</b>  $<%= @seller_listing.offered_price %>
+    <b>Offered Price:</b>  $<%= @seller_listing&.offered_price %>
     </div>
 
   </div>

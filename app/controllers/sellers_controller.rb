@@ -23,11 +23,14 @@ class SellersController < ApplicationController
   # POST /buyer_listings or /buyer_listings.json
   def create
     @seller_listing = SellerListing.find_or_initialize_by(user_id: current_user.id)
-    @seller_listing.assign_attributes(files: params[:files], offered_price: params[:offered_price], buyer_listing_id: params[:buyer_listing_id])
+    @seller_listing.assign_attributes( offered_price: params[:offered_price], buyer_listing_id: params[:buyer_listing_id])
+    if params[:files].present?
+      @seller_listing.assign_attributes(files: params[:files])
+    end
 
     respond_to do |format|
       if @seller_listing.save
-        format.html { redirect_to sellers_path, notice: "Car Attachments was successfully Submitted." }
+        format.html { redirect_to @seller_listing.buyer_listing, notice: "Car Attachments was successfully Submitted." }
         format.json { render :show, status: :created, location: @seller_listing }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -67,6 +70,6 @@ class SellersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def buyer_listing_params
-      params.require(:buyer_listing).permit(:user_id, :year, :make, :model, :trim, :mileage, :exterior_color, :interior_color, :transportation, :departure, :payment_term, :purchase_price)
+      params.require(:buyer_listing).permit(:user_id, :min_year,:max_year, :make, :model, :trim, :mileage, :exterior_color, :interior_color, :transportation, :departure, :payment_term,  :max_price, :min_price)
     end
 end

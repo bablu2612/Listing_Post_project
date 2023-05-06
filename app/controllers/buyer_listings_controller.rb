@@ -3,7 +3,11 @@ class BuyerListingsController < ApplicationController
 
   # GET /buyer_listings or /buyer_listings.json
   def index
-    @buyer_listings = current_user.buyer_listings.all.order(created_at: :desc)
+    if current_user.role == "buyer"
+      @buyer_listings = current_user.buyer_listings.all.order(created_at: :desc)
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /buyer_listings/1 or /buyer_listings/1.json
@@ -66,6 +70,6 @@ class BuyerListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def buyer_listing_params
-      params.require(:buyer_listing).permit(:user_id, :year, :make, :model, :trim, :mileage, :exterior_color, :interior_color, :transportation, :departure, :payment_term, :purchase_price)
+      params.require(:buyer_listing).permit(:user_id, :min_year,:max_year, :make, :model, :trim, :mileage, :exterior_color, :interior_color, :transportation, :departure, :payment_term,  :max_price, :min_price)
     end
 end

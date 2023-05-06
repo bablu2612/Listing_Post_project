@@ -67,6 +67,6 @@ class AdminController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def buyer_listing_params
-      params.require(:buyer_listing).permit(:user_id, :year, :make, :model, :trim, :mileage, :exterior_color, :interior_color, :transportation, :departure, :payment_term, :purchase_price)
+      params.require(:buyer_listing).permit(:user_id, :min_year, :max_year, :make, :model, :trim, :mileage, :exterior_color, :interior_color, :transportation, :departure, :payment_term, :max_price, :min_price)
     end
 end

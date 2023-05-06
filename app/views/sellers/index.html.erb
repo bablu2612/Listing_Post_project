@@ -1,9 +1,8 @@
 <style>
   .listings_main {
     padding: 8px;
-    max-width: 768px;
-    margin: auto;
-    /* background: #80808000; */
+    max-width: 500px;
+    margin: auto; 
 }
 
 .header_title_main h1 {
@@ -16,6 +15,7 @@
     overflow: hidden;
     border-radius: 10px;
 }
+
 .card_body {
     display: flex;
 }
@@ -23,18 +23,13 @@
 .card_left img.car_image {
     width: 100%;
 }
-
-.card_left {
-    width: 38%;
-}
-
 .card_right_sub .title {
     font-size: 15px;
     font-weight: 600;
 }
 
-.card_right_sub{
-  padding: 15px 25px
+.card_right_sub {
+    padding: 15px 25px;
 }
 
 .desc_sub {
@@ -44,18 +39,12 @@
 }
 
 .price_main {
-    border: 1px solid #ff4700;
+    border: 1px solid #000000d1;
     border-radius: 5px;
     width: fit-content;
     padding: 1px 10px;
     font-size: 12px;
-    color: #ff4700;
-}
-
-@media (max-width: 767px){
-  .card_right_sub {
-    padding: 15px;
-}
+    color: #000000d1;
 }
 </style>
 <%= render "layouts/welcome"%>
@@ -65,44 +54,49 @@
 <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6 w-full">
   <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
     <div class="ml-4 mt-2">
-      <h3 class="text-base font-semibold leading-6 text-gray-900">Your Listings</h3>
+      <h3 class="text-base font-semibold leading-6 text-gray-900"><%= current_user.role=="seller" || current_user.role=="admin" ? "Cars Listings" : "Your Listings" %></h3>
     </div>
     <div class="ml-4 mt-2 flex-shrink-0">
-    <%= link_to "Create new Listing", new_buyer_listing_path, method: :get, class: "no-underline relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
 
-      <button type="button" class=" hidden relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create new Listing</button>
+      <button type="button" class=" hidden relative inline-flex items-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create new Listing</button>
     </div>
   </div>
 </div>
 
  
+
+
   <div class="listings_sub">
     <% @buyer_listings.each do |buyer_listing| %>
       <div class="card_main w-full mb-2">
         <div class="card_body flex w-full">
           <div class="card_left">
-            <img class="car_image" src="<%= asset_url("no_car_image.jpeg") %>">
+            <img class="car_image" src="<%= asset_url("no_car_image.jpg") %>">
           </div>
           <div class="card_right">
             <div class="card_right_sub">
               <div class="top">
                 <div class="title">
-                  <%= "#{buyer_listing.year} #{buyer_listing.make} #{buyer_listing.model}" %>
+                  <%= "#{buyer_listing.min_year}-#{buyer_listing.max_year} #{buyer_listing.make} #{buyer_listing.model}" %>
                 </div>
                 <div class="desc flex-row gap-2">
                   <div class="desc_sub desc_trim">
-                    Trim: <%= buyer_listing.trim %> 
+                   <span> Year: </span> <%= "#{buyer_listing.min_year} - #{buyer_listing.max_year}" %>  
+                  </div>
+                  <div class="desc_sub desc_trim">
+                   <span> Make: </span> <%= buyer_listing.make %>  
                   </div>
                   <div class=" desc_sub desc_milage">
-                    Mileage: <%= buyer_listing.mileage %>
+                    <span> Model:</span>  <%= buyer_listing.model %> 
                   </div>
-                  <div class="desc_sub">
-                    Departure: <%= buyer_listing.departure %>
+                   <div class="price_main mt-2">
+                    <%= "$#{buyer_listing.min_price} - $#{buyer_listing.max_price}" %>
                   </div>
                 </div>
               </div>
-              <div class="bottom"> 
-                <div class="right flex gap-2 align-items-center">
+              <div class="loss mt-3">
+              <div class="bottom">  
+                <div class="right flex gap-2">
                   <div class="icons flex gap-3">
                     <div class="icon_sub">
                       <i class="fa fa-usd" aria-hidden="true"></i>
@@ -110,18 +104,15 @@
                     <div class="icon_sub">
                       <i class="fa fa-car" aria-hidden="true"></i>
                     </div>
-                  </div>
-                  <div class="price_main">
-                    <%= buyer_listing.purchase_price %>
-                  </div>
+                  </div> 
                 </div>
-              </div>
+              </div><div class="card_last_section align-center">
+          <%= link_to "View", buyer_listing_path(buyer_listing.id), method: :get, class: "no-underline relative inline-flex items-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+
+         </div></div>
             </div>
           </div>
-          <div class="card_last_section ml-20 align-center mt-5">
-          <%= link_to "View", buyer_listing_path(buyer_listing.id), method: :get, class: "no-underline relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
-
-         </div>
+          
 
         </div>
       </div>

@@ -1,6 +1,6 @@
 <%= form_with(model: buyer_listing, class: "contents") do |form| %>
   <% if buyer_listing.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+    <div id="error_explanation" class="bg-#4e4a4a-50 text-#4e4a4a-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(buyer_listing.errors.count, "error") %> prohibited this buyer_listing from being saved:</h2>
 
       <ul>
@@ -11,19 +11,25 @@
     </div>
   <% end %>
 
-  <div class="form_group flex justify-between gap-[50px]">
+  <div class="form_group flex justify-between gap-[10px]">
     <div class="mb-4 w-full">
-      <%= form.label :year, class: "block text-gray-700 font-bold" %>
-      <%= form.number_field :year, class: "block w-full p-2 border rounded-md shadow-sm" %>
+      <%= form.label :min_year, class: "block text-gray-700 font-bold" %>
+      <%= form.number_field :min_year, class: "block w-full p-2 border rounded-md shadow-sm" %>
     </div>
 
+     <div class="mb-4 w-full">
+      <%= form.label :max_year, class: "block text-gray-700 font-bold" %>
+      <%= form.number_field :max_year, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
+  </div>
+   <div class="form_group flex justify-between gap-[10px]">
     <div class="mb-4 w-full">
       <%= form.label :make, class: "block text-gray-700 font-bold" %>
       <%= form.text_field :make, class: "block w-full p-2 border rounded-md shadow-sm" %>
     </div>
   </div>
 
-  <div class="form_group flex justify-between gap-[50px]">
+  <div class="form_group flex justify-between gap-[10px]">
     <div class="mb-4 w-full">
       <%= form.label :model, class: "block text-gray-700 font-bold" %>
       <%= form.text_field :model, class: "block w-full p-2 border rounded-md shadow-sm" %>
@@ -35,28 +41,33 @@
     </div>
   </div>
 
-  <div class="form_group flex justify-between gap-[50px]">
+  <div class="form_group flex justify-between gap-[10px]">
     <div class="mb-4 w-full">
       <%= form.label :mileage, class: "block text-gray-700 font-bold" %>
       <%= form.text_field :mileage, class: "block w-full p-2 border rounded-md shadow-sm" %>
     </div>
+  </div>
 
+  <div class="form_group flex justify-between gap-[10px]">
     <div class="mb-4 w-full">
       <%= form.label :exterior_color, class: "block text-gray-700 font-bold" %>
       <%= form.text_field :exterior_color, class: "block w-full p-2 border rounded-md shadow-sm" %>
     </div>
-  </div>
-
-  <div class="form_group flex justify-between gap-[50px]">
     <div class="mb-4 w-full">
       <%= form.label :interior_color, class: "block text-gray-700 font-bold" %>
       <%= form.text_field :interior_color, class: "block w-full p-2 border rounded-md shadow-sm" %>
     </div>
+  </div>
+  <div class="form_group flex justify-between gap-[10px]">
+    <div class="mb-4 w-full">
+      <%= form.label :min_price ,class: "block text-gray-700 font-bold" %>
+      <%= form.text_field :min_price, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
 
     <div class="mb-4 w-full">
-    <%= form.label :purchase_price ,class: "block text-gray-700 font-bold" %>
-    <%= form.text_field :purchase_price, class: "block w-full p-2 border rounded-md shadow-sm" %>
-  </div>
+      <%= form.label :max_price ,class: "block text-gray-700 font-bold" %>
+      <%= form.text_field :max_price, class: "block w-full p-2 border rounded-md shadow-sm" %>
+    </div>
 
     
   </div>
@@ -86,6 +97,6 @@
   
 
   <div class="inline">
-    <%= form.submit "Submit", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "Submit", class: "rounded-lg py-3 px-5 bg-black text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

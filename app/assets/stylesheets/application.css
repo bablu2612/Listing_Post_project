@@ -63,7 +63,7 @@
 }
 
 .card_right_sub .title {
-    color: #5f00e8;margin-bottom: 5px;
+    color: #000000d9;margin-bottom: 5px;
 }
  
 .desc>.desc_sub span {
@@ -78,7 +78,7 @@
     height: 40px;
     display: inline-grid;
     place-content: center;
-    color: #5f00e8;
+    color: #000000d9;
     padding: 0;
 }
  
