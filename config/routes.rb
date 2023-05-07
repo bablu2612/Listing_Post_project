@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :buyer_listings
 
   resources :sellers
+  get "/admin", to: "admin#index"
+  post "/publish_list",to: "buyer_listings#publish_listing"
   devise_for :users
 
   root "home#index"

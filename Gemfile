@@ -57,3 +57,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem 'friendly_id', '~> 5.4.0'

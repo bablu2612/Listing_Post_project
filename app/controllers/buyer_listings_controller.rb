@@ -1,6 +1,6 @@
 class BuyerListingsController < ApplicationController
   before_action :set_buyer_listing, only: %i[ show edit update destroy ]
-
+  skip_before_action :verify_authenticity_token
   # GET /buyer_listings or /buyer_listings.json
   def index
     if current_user.role == "buyer"
@@ -12,7 +12,8 @@ class BuyerListingsController < ApplicationController
 
   # GET /buyer_listings/1 or /buyer_listings/1.json
   def show
-    @seller_listing = @buyer_listing.seller_listings.find_by(user_id: current_user.id)
+    @seller_listings = @buyer_listing.seller_listings
+    @seller_listing = @buyer_listing.seller_listings.find_by(user_id: current_user&.id)
   end
 
   # GET /buyer_listings/new
@@ -51,6 +52,11 @@ class BuyerListingsController < ApplicationController
       end
     end
   end
+  
+  def publish_listing
+    publish = params[:publish] == "true" ? true : false
+    buyer_listing = BuyerListing.find(params[:id]).update(published: publish)
+  end
 
   # DELETE /buyer_listings/1 or /buyer_listings/1.json
   def destroy
@@ -65,7 +71,7 @@ class BuyerListingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_buyer_listing
-      @buyer_listing = BuyerListing.find(params[:id])
+      @buyer_listing = BuyerListing.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

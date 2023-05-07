@@ -4,7 +4,7 @@ class SellersController < ApplicationController
 
   # GET /buyer_listings or /buyer_listings.json
   def index
-    @buyer_listings = BuyerListing.all.order(created_at: :desc)
+    @buyer_listings = BuyerListing.all.joins(:seller_listings).where("seller_listings.user_id = #{current_user.id}").order(created_at: :desc)
   end
 
   # GET /buyer_listings/1 or /buyer_listings/1.json
@@ -23,7 +23,7 @@ class SellersController < ApplicationController
   # POST /buyer_listings or /buyer_listings.json
   def create
     @seller_listing = SellerListing.find_or_initialize_by(user_id: current_user.id)
-    @seller_listing.assign_attributes( offered_price: params[:offered_price], buyer_listing_id: params[:buyer_listing_id])
+    @seller_listing.assign_attributes(year: params[:year], interior_color: params[:interior_color], exterior_color: params[:exterior_color], offered_price: params[:offered_price], buyer_listing_id: params[:buyer_listing_id])
     if params[:files].present?
       @seller_listing.assign_attributes(files: params[:files])
     end

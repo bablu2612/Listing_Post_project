@@ -14,12 +14,12 @@
   <div class="form_group flex justify-between gap-[10px]">
     <div class="mb-4 w-full">
       <%= form.label :min_year, class: "block text-gray-700 font-bold" %>
-      <%= form.number_field :min_year, class: "block w-full p-2 border rounded-md shadow-sm" %>
+      <%= form.number_field :min_year, class: "block w-full p-2 border rounded-md shadow-sm", required: true %>
     </div>
 
      <div class="mb-4 w-full">
       <%= form.label :max_year, class: "block text-gray-700 font-bold" %>
-      <%= form.number_field :max_year, class: "block w-full p-2 border rounded-md shadow-sm" %>
+      <%= form.number_field :max_year, class: "block w-full p-2 border rounded-md shadow-sm", required: true %>
     </div>
   </div>
    <div class="form_group flex justify-between gap-[10px]">

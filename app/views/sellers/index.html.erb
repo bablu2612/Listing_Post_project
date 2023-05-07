@@ -67,6 +67,9 @@
 
 
   <div class="listings_sub">
+    <% if @buyer_listings.count == 0 %>
+      <div class="no_listings"> No Listing Found</div>
+    <% end %>
     <% @buyer_listings.each do |buyer_listing| %>
       <div class="card_main w-full mb-2">
         <div class="card_body flex w-full">
