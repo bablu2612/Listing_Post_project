@@ -82,9 +82,23 @@
             <div class="card_right_sub">
               <div class="top">
                 <div class="title">
-                  <%= "#{buyer_listing.min_year} #{buyer_listing.make} #{buyer_listing.model}" %>
+                  <%= "#{buyer_listing.min_year} - #{buyer_listing.max_year} #{buyer_listing.make} #{buyer_listing.model}" %>
                 </div>
                 <div class="desc flex-row gap-2">
+
+                 <div class="desc_sub desc_trim">
+                   <span> Year: </span> <%= "#{buyer_listing.min_year} - #{buyer_listing.max_year}" %>  
+                  </div>
+
+                  <div class="desc_sub desc_trim">
+                   <span> Make: </span> <%= buyer_listing.make %>  
+                  </div>
+
+                  <div class="desc_sub desc_trim">
+                  <span> Model: </span> <%= buyer_listing.model %>  
+                 </div>
+
+                  
                   <div class="desc_sub desc_trim">
                    <span> Trim: </span> <%= buyer_listing.trim %>  
                   </div>
@@ -102,7 +116,7 @@
               <div class="loss mt-3">
               <div class="bottom">  
                 <div class="right flex gap-2">
-                  <div class="icons flex gap-3">
+                  <div class="icons flex gap-icon">
                     <div class="icon_sub">
                       <i class="fa fa-usd" aria-hidden="true"></i>
                     </div>
