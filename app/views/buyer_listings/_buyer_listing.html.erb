@@ -1,397 +1,328 @@
-<div id="<%= dom_id buyer_listing %>" class="bg-white rounded-lg shadow p-6 mb-2 mt-4">
-  <h2 class="text-2xl font-medium Car_Details">Car Details</h2>
-  
-  <div class="grid grid-cols-2 gap-x-8 gap-y-4">
-    <div>
-      <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Year:</strong>
-        <%= buyer_listing.min_year %> - <%= buyer_listing.max_year %>
-      </p>
-
-      <p class="mb-4 hidden">
-        <strong class="block text-gray-600 mb-1">Max Year:</strong>
-        <%= buyer_listing.max_year %>
-      </p>
-
-      <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Make:</strong>
-        <%= buyer_listing.make %>
-      </p>
-
-      <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Model:</strong>
-        <%= buyer_listing.model %>
-      </p>
-
-      <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Trim:</strong>
-        <%= buyer_listing.trim %>
-      </p>
-
-      <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Mileage:</strong>
-        <%= buyer_listing.mileage %>
-      </p>
+<div id="<%= dom_id buyer_listing %>" class="bg-white rounded-lg shadow p-3 sm:p-6 mb-2 mt-4">
+    <h2 class="text-xl sm:text-2xl font-bold Car_Details">Car Details</h2>
+    <div class="grid grid-cols-2 gap-3 sm:gap-x-8 sm:gap-y-4">
+        <div>
+            <p class="mb-4"> <strong class="block text-gray-600 mb-1">Year:</strong>
+                <%= buyer_listing.min_year %> -
+                    <%= buyer_listing.max_year %>
+            </p>
+            <p class="mb-4 hidden"> <strong class="block text-dark mb-1">Max Year:</strong>
+                <%= buyer_listing.max_year %>
+            </p>
+            <p class="mb-4"> <strong class="block text-dark mb-1">Make:</strong>
+                <%= buyer_listing.make %>
+            </p>
+            <p class="mb-4"> <strong class="block text-dark mb-1">Model:</strong>
+                <%= buyer_listing.model %>
+            </p>
+            <p class="mb-4"> <strong class="block text-dark mb-1">Trim:</strong>
+                <%= buyer_listing.trim %>
+            </p>
+            <p class="mb-4"> <strong class="block text-dark mb-1">Mileage:</strong>
+                <%= buyer_listing.mileage %>
+            </p>
+        </div>
+        <div>
+            <p class="mb-4"> <strong class="block text-dark mb-1">Exterior color:</strong>
+                <%= buyer_listing.exterior_color %>
+            </p>
+            <p class="mb-4"> <strong class="block text-dark mb-1">Interior color:</strong>
+                <%= buyer_listing.interior_color %>
+            </p>
+            <p class="mb-4"> <strong class="block text-dark mb-1">Shipping Method:</strong>
+                <%= buyer_listing.transportation %>
+            </p>
+            <p class="mb-4"> <strong class="block text-dark mb-1">Departure:</strong>
+                <%= buyer_listing.departure %>
+            </p>
+            <p class="mb-4"> <strong class="block text-dark mb-1">Payment term:</strong>
+                <%= buyer_listing.payment_term %>
+            </p>
+            <p class="mb-4"> <strong class="block text-dark mb-1">Price:</strong> $
+                <%= buyer_listing.min_price %> - $
+                    <%= buyer_listing.max_price %>
+            </p>
+            <p class="mb-4 hidden"> <strong class="block text-dark mb-1">Max price:</strong>
+                <%= buyer_listing.max_price %>
+            </p>
+        </div>
     </div>
+    <% if current_user.role == "seller" %>
+        <div class="car_attachement">
+            <h2 class="text-xl sm:text-2xl font-bold Car_Details">Car Attachments</h2>
+            <div class="car_attachment_button_main flex justify-end mb-2"> 
+            
+                <button class="text-[#4e4a4a] p-2 bg-gray-100 rounded edit_attachments flex justify-end items-center gap-[5px]" onclick="carAttchmentModal()">
+                  <div class="edit_icons <%= @seller_listing&.files.present? ? '' : 'hidden' %>" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24">
 
-    <div>
-      <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Exterior color:</strong>
-        <%= buyer_listing.exterior_color %>
-      </p>
+              <title/>
 
-      <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Interior color:</strong>
-        <%= buyer_listing.interior_color %>
-      </p>
+              <g id="Complete">
 
-      <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Shipping Method:</strong>
-        <%= buyer_listing.transportation %>
-      </p>
+              <g id="edit">
 
-      <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Departure:</strong>
-        <%= buyer_listing.departure %>
-      </p>
+              <g>
 
-      <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Payment term:</strong>
-        <%= buyer_listing.payment_term %>
-      </p>
+              <path d="M20,16v4a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H8" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
 
-      <p class="mb-4">
-        <strong class="block text-gray-600 mb-1">Price:</strong>
-        $ <%= buyer_listing.min_price %> - $<%= buyer_listing.max_price %>
-      </p>
+              <polygon fill="none" points="12.5 15.8 22 6.2 17.8 2 8.3 11.5 8 16 12.5 15.8" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
 
-       <p class="mb-4 hidden">
-        <strong class="block text-gray-600 mb-1">Max price:</strong>
-        <%= buyer_listing.max_price %>
-      </p>
+              </g>
 
-    </div>
+              </g>
 
-    </div>
-<% if current_user.role == "seller" %>
-  <div class="car_attachement">
-    <h2 class="text-2xl font-medium mb-[0] mt-5">Car Attachments</h2>
-    <div class="car_attachment_button_main flex justify-end mb-[10px]">
-      <button class="text-[#4e4a4a] edit_attachments " onclick="carAttchmentModal()"><%= @seller_listing&.files.present? ? "Edit Offers" : "Add Offers" %></button>
-    </div>
+              </g>
 
-    <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="car_attachement_modal">
-      <div class="seller_list_form">
-        
-        <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-          <div class="fixed inset-0 transition-opacity">
-            <div class="absolute inset-0 bg-gray-900 opacity-75" >
-          </div>
-          <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-          <div class="inline-block align-center bg-white rounded-lg text-left overflow-auto max-h-[600px] shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-            <div
-              class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 py-[10px] px-4 dark:border-opacity-50">
-              <!--Modal title-->
-              <h5
-                class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
-                id="exampleModalLabel">
+              </svg>
+</div>  <%= @seller_listing&.files.present? ? "Edit Offers" : "Add Offers" %>
+                </button>
+            </div>
+            <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="car_attachement_modal">
+                <div class="seller_list_form">
+                    <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                        <div class="fixed inset-0 transition-opacity">
+                            <div class="absolute inset-0 bg-gray-900 opacity-75"> </div> <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                            <div class="inline-block align-center bg-white rounded-lg text-left shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                                <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 py-[10px] px-4 dark:border-opacity-50">
+                                    <!--Modal title-->
+                                    <h5 class="text-xl font-bold leading-normal text-neutral-800 dark:text-neutral-200 mb-0" id="exampleModalLabel">
                 <%= @seller_listing&.files.present? ? "Edit Offers" : "Add Offers" %>
               </h5>
-              <!--Close button-->
-              <button
-                onclick="carAttchmentModal()"
-                type="button"
-                class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-                data-te-modal-dismiss
-                aria-label="Close">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-6 w-6">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-
-              <form id="car_attachment_form" action="/sellers" method="post" enctype='multipart/form-data'>
-                <input type="hidden" name="buyer_listing_id" value="<%= @buyer_listing.id %>">
-                <div class="upload_files_main">
-                  <div class="max-w-xl">
-                    <label for="file_upload" id="drop_zone"
-                      class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
-                      <span class="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                                    <!--Close button-->
+                                    <button onclick="carAttchmentModal()" type="button" class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none" data-te-modal-dismiss aria-label="Close">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
+                                    </button>
+                                </div>
+                                <div class="bg-white px-4 sm:p-6 sm:pb-4 overflow-auto max-h-[600px] rounded">
+                                    <form id="car_attachment_form" action="/sellers" method="post" enctype='multipart/form-data'>
+                                        <input type="hidden" name="buyer_listing_id" value="<%= @buyer_listing.id %>">
+                                        <div class="upload_files_main">
+                                            <div class="max-w-xl">
+                                                <label for="file_upload" id="drop_zone" class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none"> <span class="flex items-center space-x-2 flex-col justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-[26px] text-black" fill="none" viewBox="0 0 24 24"
                           stroke="currentColor" stroke-width="2">
                           <path stroke-linecap="round" stroke-linejoin="round"
                             d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                         </svg>
-                        <span class="font-medium text-gray-600">
+                        <span class="font-medium text-gray-600 mt-2 ml-0">
                           Drop files to Attach, or
-                          <span class="text-blue-600 underline">browse</span>
-                        </span>
-                      </span>
-                      <input type="file" name="files[]" id="file_upload" class="hidden" multiple="true" accept="image/png, image/gif, image/jpeg">
-                    </label>
-                  </div>
-                  <div class="form_group mt-[15px] mb-[5px] flex  items-center gap-[20px]">
-                    <label for="year" class="min-w-[95px]" >Year</label>
-                    <div class="error_div">
-                    <input type="number" id="year" name="year" value="<%= @seller_listing&.year %>" class="rounded">
-                    <div class="year_required hidden bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">Year is required</div>
+                          <span class="text-blue-900 text-capitalize underline">browse</span> </span>
+                                                    </span>
+                                                    <input type="file" name="files[]" id="file_upload" class="hidden" multiple="true" accept="image/png, image/gif, image/jpeg"> </label>
+                                            </div>
+                                            <div class="form_group mt-[15px] mb-[5px] gap-[20px]">
+                                                <div class="fieldarea flex-wrap flex w-full">
+                                                    <label for="year" class="min-w-[95px] font-bold">Year</label>
+                                                    <input type="number" id="year" name="year" value="<%= @seller_listing&.year %>" class="rounded input input-md h-11 focus:ring-indigo-600 focus-within:ring-indigo-600 focus-within:border-indigo-600 focus:border-indigo-600"> </div>
+                                                <div class="error_div">
+                                                    <div class="year_required hidden bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3 w-full">Year is required</div>
+                                                </div>
+                                            </div>
+                                            <div class="form_group mt-[15px] mb-[5px]">
+                                                <div class="fieldarea flex-wrap flex w-full">
+                                                    <label for="interior_color" class="min-w-[95px] font-bold mb-1">Interior color</label>
+                                                    <input type="text" id="interior_color" name="interior_color" value="<%= @seller_listing&.interior_color %>" class="rounded input input-md h-11 focus:ring-indigo-600 focus-within:ring-indigo-600 focus-within:border-indigo-600 focus:border-indigo-600"> 
+                                                </div>
+                                                <div class="error_div">
+                                                    <div class="interior_color_required hidden bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3 w-full">Interior Color is required</div>
+                                                </div> 
+                                            </div>
+                                                <div class="form_group mt-[15px] mb-[5px]">
+                                                    <div class="fieldarea flex-wrap flex w-full">
+                                                        <label for="exterior_color" class="min-w-[95px] font-bold">Exterior color</label>
+                                                        <input type="text" id="exterior_color" name="exterior_color" value="<%= @seller_listing&.exterior_color %>" class="rounded input input-md h-11 focus:ring-indigo-600 focus-within:ring-indigo-600 focus-within:border-indigo-600 focus:border-indigo-600"> </div>
+                                                    <div class="error_div">
+                                                        <div class="exterior_color_required hidden bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3 w-full">Exterior Colour is required</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form_group mt-[15px] mb-[5px] gap-[20px]">
+                                                    <div class="fieldarea flex-wrap flex w-full">
+                                                        <label for="offer_price" class="min-w-[95px] font-bold">Offered Price</label>
+                                                        <input type="number" id="offer_price" name="offered_price" value="<%= @seller_listing&.offered_price %>" class="rounded input input-md h-11 focus:ring-indigo-600 focus-within:ring-indigo-600 focus-within:border-indigo-600 focus:border-indigo-600">
+                                                        <div class="error_div">
+                                                            <div class="offer_price_required hidden bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3 w-full">Offered Price is required</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="py-3 sm:flex items-center">
+                                                    <button type="submit" class="submit_car_attachment w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 focus:outline-none bg-white text-base font-medium  focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:w-auto sm:text-sm" @click="open = false"> Submit </button>
+                                                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-black text-base font-medium text-white hover:bg-black text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="open = false" onclick="carAttchmentModal()"> Cancel </button>
+                                                </div>
+                                            </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-
-                  <div class="form_group mt-[15px] mb-[5px] flex  items-center gap-[20px]">
-                    <label for="interior_color" class="min-w-[95px]" >Interior color</label>
-                    <div class="error_div">
-                    <input type="text" id="interior_color" name="interior_color" value="<%= @seller_listing&.interior_color %>" class="rounded">
-                    <div class="interior_color_required hidden bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">Interior Color is required</div>
                     </div>
-                  </div>
-                  <div class="form_group mt-[15px] mb-[5px] flex  items-center gap-[20px]">
-                    <label for="exterior_color" class="min-w-[95px]" >Exterior color</label>
-                    <div class="error_div">
-                    <input type="text" id="exterior_color" name="exterior_color" value="<%= @seller_listing&.exterior_color %>" class="rounded">
-                    <div class="exterior_color_required hidden bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">Exterior Colour is required</div>
-                    </div>
-                  </div>
+                    <% if @seller_listing&.files.present? %>
+                        <div class="flex attached_files_main mt-[10px] gap-[10px] edit_closed flex-wrap justify-center">
+                            <div class="card_main w-full mb-2">
+                                <div class="card_body flex w-full" style="align-items: flex-start;">
+                                    <div class="card_left"> <img class="car_image" style="border-radius: 5px; min-height: 70px; height: 92px" src="<%= url_for(@seller_listing&.files[0]) rescue nil %>"> </div>
+                                    <div class="card_right">
+                                        <div class="card_right_sub px-0 pt-0 pb-0">
+                                            <div class="top">
+                                                <div class="title font-bold mb-1" >
+                                                    <%= "#{@seller_listing&.year} #{buyer_listing.make&.humanize} #{buyer_listing.model&.humanize}" %>
+                                                </div>
+                                                <div class="desc flex-row gap-2">
+                                                    <div class="desc_sub desc_trim text-[13px]"> <span> Year: </span>
+                                                        <%= "#{@seller_listing&.year}" %>
+                                                    </div>
+                                                    <div class="desc_sub desc_trim text-[13px]"> <span> Interior Colour: </span>
+                                                        <%= @seller_listing&.interior_color %>
+                                                    </div>
+                                                    <div class="desc_sub desc_trim text-[13px]"> <span> Exterior Colour: </span>
+                                                        <%= @seller_listing&.exterior_color %>
+                                                    </div>
+                                                    <div class="price_main text-[15px] font-semibold mt-[5px] text-right"> $
+                                                        <%= @seller_listing&.offered_price %>
+                                                    </div>
+                                                    <div class="desc_sub desc_trim text-[11px]" style="color:  #000">
+                                                        <div class="flex gap-[5px] hidden"><span><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 122.88 122.88" enable-background="new 0 0 122.88 122.88" xml:space="preserve"><g><path d="M34.388,67.984c-0.286-0.308-0.542-0.638-0.762-0.981c-0.221-0.345-0.414-0.714-0.573-1.097 c-0.531-1.265-0.675-2.631-0.451-3.934c0.224-1.294,0.812-2.531,1.744-3.548l0.34-0.35c2.293-2.185,5.771-2.592,8.499-0.951 c0.39,0.233,0.762,0.51,1.109,0.827l0.034,0.031c1.931,1.852,5.198,4.881,7.343,6.79l1.841,1.651l22.532-23.635 c0.317-0.327,0.666-0.62,1.035-0.876c0.378-0.261,0.775-0.482,1.185-0.661c0.414-0.181,0.852-0.323,1.3-0.421 c0.447-0.099,0.903-0.155,1.356-0.165h0.026c0.451-0.005,0.893,0.027,1.341,0.103c0.437,0.074,0.876,0.193,1.333,0.369 c0.421,0.161,0.825,0.363,1.207,0.604c0.365,0.231,0.721,0.506,1.056,0.822l0.162,0.147c0.316,0.313,0.601,0.653,0.85,1.014 c0.256,0.369,0.475,0.766,0.652,1.178c0.183,0.414,0.325,0.852,0.424,1.299c0.1,0.439,0.154,0.895,0.165,1.36v0.23 c-0.004,0.399-0.042,0.804-0.114,1.204c-0.079,0.435-0.198,0.863-0.356,1.271c-0.16,0.418-0.365,0.825-0.607,1.21 c-0.238,0.377-0.518,0.739-0.832,1.07l-27.219,28.56c-0.32,0.342-0.663,0.642-1.022,0.898c-0.369,0.264-0.767,0.491-1.183,0.681 c-0.417,0.188-0.851,0.337-1.288,0.44c-0.435,0.104-0.889,0.166-1.35,0.187l-0.125,0.003c-0.423,0.009-0.84-0.016-1.241-0.078 l-0.102-0.02c-0.415-0.07-0.819-0.174-1.205-0.31c-0.421-0.15-0.833-0.343-1.226-0.575l-0.063-0.04 c-0.371-0.224-0.717-0.477-1.032-0.754l-0.063-0.06c-1.58-1.466-3.297-2.958-5.033-4.466c-3.007-2.613-7.178-6.382-9.678-9.02 L34.388,67.984L34.388,67.984z M61.44,0c16.96,0,32.328,6.883,43.453,17.987c11.104,11.125,17.986,26.493,17.986,43.453 c0,16.961-6.883,32.329-17.986,43.454C93.769,115.998,78.4,122.88,61.44,122.88c-16.961,0-32.329-6.882-43.454-17.986 C6.882,93.769,0,78.4,0,61.439C0,44.48,6.882,29.112,17.986,17.987C29.112,6.883,44.479,0,61.44,0L61.44,0z M96.899,25.981 C87.826,16.907,75.29,11.296,61.44,11.296c-13.851,0-26.387,5.611-35.46,14.685c-9.073,9.073-14.684,21.609-14.684,35.458 c0,13.851,5.611,26.387,14.684,35.46s21.609,14.685,35.46,14.685c13.85,0,26.386-5.611,35.459-14.685s14.684-21.609,14.684-35.46 C111.583,47.59,105.973,35.054,96.899,25.981L96.899,25.981z"></path></g></svg></span> Authenticity Guarantee</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% else %>
+                                <div class="flex attached_files_main mt-[10px] gap-[10px] flex-wrap justify-center mb-[15px] bg-[#80808047] text-[#000] rounded p-[30px] mt-[-8px]" style="border:1px dashed #80808073"> No Attachments Found </div>
+                                <% end %>
+                        </div>
+                        <% end %>
+                            <% if current_user.role == "buyer" || current_user.role == "admin" %>
+                                <h2 class="text-2xl font-medium Car_Details"> Offers</h2>
+                                <% if @seller_listings.present? %>
+                                    <% @seller_listings.each do |seller_listing|%>
+                                        <div class="flex attached_files_main mt-[10px] gap-[10px] edit_closed flex-wrap justify-center">
+                                            <div class="card_main w-full mb-2">
+                                                <div class="card_body flex w-full" style="align-items: flex-start;">
+                                                    <div class="card_left"> <img class="car_image" style="border-radius: 5px; min-height: 70px; height: 92px" src="<%= url_for(seller_listing&.files[0]) rescue nil %>"> </div>
+                                                    <div class="card_right">
+                                                        <div class="card_right_sub px-0" style="padding-top: 0px!important">
+                                                            <div class="top">
+                                                                <div class="title" style="margin-bottom: 0">
+                                                                    <%= "#{seller_listing&.year} #{seller_listing.buyer_listing.make} #{seller_listing.buyer_listing.model}" %>
+                                                                </div>
+                                                                <div class="desc flex-row gap-2">
+                                                                    <div class="desc_sub desc_trim text-[12px]"> <span> Year: </span>
+                                                                        <%= "#{seller_listing&.year}" %>
+                                                                    </div>
+                                                                    <div class="desc_sub desc_trim text-[12px]"> <span> Interior Colour: </span>
+                                                                        <%= seller_listing&.interior_color %>
+                                                                    </div>
+                                                                    <div class="desc_sub desc_trim text-[12px]"> <span> Exterior Colour: </span>
+                                                                        <%= seller_listing&.exterior_color %>
+                                                                    </div>
+                                                                    <div class="price_main text-[15px] font-semibold mt-[5px]"> $
+                                                                        <%= seller_listing&.offered_price %>
+                                                                    </div>
+                                                                    <div class="desc_sub desc_trim text-[11px]" style="color:  #000">
+                                                                        <div class="flex gap-[5px] hidden"><span><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 122.88 122.88" enable-background="new 0 0 122.88 122.88" xml:space="preserve"><g><path d="M34.388,67.984c-0.286-0.308-0.542-0.638-0.762-0.981c-0.221-0.345-0.414-0.714-0.573-1.097 c-0.531-1.265-0.675-2.631-0.451-3.934c0.224-1.294,0.812-2.531,1.744-3.548l0.34-0.35c2.293-2.185,5.771-2.592,8.499-0.951 c0.39,0.233,0.762,0.51,1.109,0.827l0.034,0.031c1.931,1.852,5.198,4.881,7.343,6.79l1.841,1.651l22.532-23.635 c0.317-0.327,0.666-0.62,1.035-0.876c0.378-0.261,0.775-0.482,1.185-0.661c0.414-0.181,0.852-0.323,1.3-0.421 c0.447-0.099,0.903-0.155,1.356-0.165h0.026c0.451-0.005,0.893,0.027,1.341,0.103c0.437,0.074,0.876,0.193,1.333,0.369 c0.421,0.161,0.825,0.363,1.207,0.604c0.365,0.231,0.721,0.506,1.056,0.822l0.162,0.147c0.316,0.313,0.601,0.653,0.85,1.014 c0.256,0.369,0.475,0.766,0.652,1.178c0.183,0.414,0.325,0.852,0.424,1.299c0.1,0.439,0.154,0.895,0.165,1.36v0.23 c-0.004,0.399-0.042,0.804-0.114,1.204c-0.079,0.435-0.198,0.863-0.356,1.271c-0.16,0.418-0.365,0.825-0.607,1.21 c-0.238,0.377-0.518,0.739-0.832,1.07l-27.219,28.56c-0.32,0.342-0.663,0.642-1.022,0.898c-0.369,0.264-0.767,0.491-1.183,0.681 c-0.417,0.188-0.851,0.337-1.288,0.44c-0.435,0.104-0.889,0.166-1.35,0.187l-0.125,0.003c-0.423,0.009-0.84-0.016-1.241-0.078 l-0.102-0.02c-0.415-0.07-0.819-0.174-1.205-0.31c-0.421-0.15-0.833-0.343-1.226-0.575l-0.063-0.04 c-0.371-0.224-0.717-0.477-1.032-0.754l-0.063-0.06c-1.58-1.466-3.297-2.958-5.033-4.466c-3.007-2.613-7.178-6.382-9.678-9.02 L34.388,67.984L34.388,67.984z M61.44,0c16.96,0,32.328,6.883,43.453,17.987c11.104,11.125,17.986,26.493,17.986,43.453 c0,16.961-6.883,32.329-17.986,43.454C93.769,115.998,78.4,122.88,61.44,122.88c-16.961,0-32.329-6.882-43.454-17.986 C6.882,93.769,0,78.4,0,61.439C0,44.48,6.882,29.112,17.986,17.987C29.112,6.883,44.479,0,61.44,0L61.44,0z M96.899,25.981 C87.826,16.907,75.29,11.296,61.44,11.296c-13.851,0-26.387,5.611-35.46,14.685c-9.073,9.073-14.684,21.609-14.684,35.458 c0,13.851,5.611,26.387,14.684,35.46s21.609,14.685,35.46,14.685c13.85,0,26.386-5.611,35.459-14.685s14.684-21.609,14.684-35.46 C111.583,47.59,105.973,35.054,96.899,25.981L96.899,25.981z"></path></g></svg></span> Authenticity Guarantee</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% end %>
+                                                <% else %>
+                                                    <div class="flex attached_files_main mt-[10px] gap-[10px] flex-wrap justify-center mb-[15px] bg-[#80808047] text-[#000] rounded p-[30px] mt-[-8px]" style="border:1px dashed #80808073"> No Attachments Found </div>
+                                                    <% end %>
+                                                        <% end %>
+                                        </div>
+                                        <script>
+                                            function carAttchmentModal() {
+                                                document.getElementById('car_attachement_modal').classList.toggle('hidden')
+                                            }
+                                            // Get the drop zone element
+                                            var dropZone = document.getElementById('drop_zone');
+                                            // Get the file input element
+                                            var fileInput = document.getElementById('file_upload');
+                                            // Add event listeners for drag and drop
+                                            dropZone.addEventListener('dragover', handleDragOver, false);
+                                            dropZone.addEventListener('dragleave', handleDragLeave, false);
+                                            dropZone.addEventListener('drop', handleDrop, false);
+                                            // Add event listener for manual file selection
+                                            fileInput.addEventListener('change', handleFileSelect, false);
 
-                  <div class="form_group mt-[15px] mb-[5px] flex  items-center gap-[20px]">
-                    <label for="offer_price" class="min-w-[95px]" >Offered Price</label>
-                    <div class="error_div">
-                    <input type="number" id="offer_price" name="offered_price" value="<%= @seller_listing&.offered_price %>" class="rounded">
-                    <div class="offer_price_required hidden bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">Offered Price is required</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                  <button type="submit" class="submit_car_attachment w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-black text-base font-medium text-white hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" @click="open = false">
-                      Submit
-                  </button>
-                  <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="open = false" onclick="carAttchmentModal()">
-                      Cancel
-                  </button>
-                </div>
-          </div>
-              </form>
-            </div>
-      </div>
-    </div>
-    </div>
-    </div>
+                                            function handleDragOver(event) {
+                                                event.preventDefault();
+                                                dropZone.classList.add('border-blue-600');
+                                            }
 
-    <% if @seller_listing&.files.present? %>
-      <div class="flex attached_files_main mt-[10px] gap-[10px] edit_closed flex-wrap justify-center">
-        
-        <div class="card_main w-full mb-2">
-          <div class="card_body flex w-full" style="align-items: flex-start;">
-            <div class="card_left">
-              <img class="car_image" style="border-radius: 5px; min-height: 70px; height: 92px" src="<%= url_for(@seller_listing&.files[0]) rescue nil %>">
-            </div>
-            <div class="card_right">
-              <div class="card_right_sub px-0" style="padding-top: 0px!important">
-                <div class="top">
-                  <div class="title" style="margin-bottom: 0">
-                    <%= "#{@seller_listing&.year} #{buyer_listing.make&.humanize} #{buyer_listing.model&.humanize}" %>
-                  </div>
-                  <div class="desc flex-row gap-2">
+                                            function handleDragLeave(event) {
+                                                event.preventDefault();
+                                                dropZone.classList.remove('border-blue-600');
+                                            }
 
-                  <div class="desc_sub desc_trim text-[12px]">
-                    <span> Year: </span> <%= "#{@seller_listing&.year}" %>
-                    </div>
+                                            function handleDrop(event) {
+                                                event.preventDefault();
+                                                dropZone.classList.remove('border-blue-600');
+                                                // Get the dropped files
+                                                var files = event.dataTransfer.files;
+                                                // Update the label text with the number of files dropped
+                                                if (files.length === 1) {
+                                                    dropZone.querySelector('span').innerHTML = '1 file attached';
+                                                }
+                                                else {
+                                                    dropZone.querySelector('span').innerHTML = files.length + ' files attached';
+                                                }
+                                                // Add the files to the input element
+                                                fileInput.files = files;
+                                            }
 
-                    <div class="desc_sub desc_trim text-[12px]">
-                    <span> Interior Colour: </span> <%= @seller_listing&.interior_color %>  
-                    </div>
-
-                    <div class="desc_sub desc_trim text-[12px]">
-                    <span> Exterior Colour: </span> <%= @seller_listing&.exterior_color %>  
-                  </div>
-
-                    
-                    <div class="price_main text-[15px] font-semibold mt-[5px]">
-                      $<%= @seller_listing&.offered_price %>  
-                    </div>
-                    <div class="desc_sub desc_trim text-[11px]" style="color:  #000">
-                    <div class="flex gap-[5px] hidden"><span><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 122.88 122.88" enable-background="new 0 0 122.88 122.88" xml:space="preserve"><g><path d="M34.388,67.984c-0.286-0.308-0.542-0.638-0.762-0.981c-0.221-0.345-0.414-0.714-0.573-1.097 c-0.531-1.265-0.675-2.631-0.451-3.934c0.224-1.294,0.812-2.531,1.744-3.548l0.34-0.35c2.293-2.185,5.771-2.592,8.499-0.951 c0.39,0.233,0.762,0.51,1.109,0.827l0.034,0.031c1.931,1.852,5.198,4.881,7.343,6.79l1.841,1.651l22.532-23.635 c0.317-0.327,0.666-0.62,1.035-0.876c0.378-0.261,0.775-0.482,1.185-0.661c0.414-0.181,0.852-0.323,1.3-0.421 c0.447-0.099,0.903-0.155,1.356-0.165h0.026c0.451-0.005,0.893,0.027,1.341,0.103c0.437,0.074,0.876,0.193,1.333,0.369 c0.421,0.161,0.825,0.363,1.207,0.604c0.365,0.231,0.721,0.506,1.056,0.822l0.162,0.147c0.316,0.313,0.601,0.653,0.85,1.014 c0.256,0.369,0.475,0.766,0.652,1.178c0.183,0.414,0.325,0.852,0.424,1.299c0.1,0.439,0.154,0.895,0.165,1.36v0.23 c-0.004,0.399-0.042,0.804-0.114,1.204c-0.079,0.435-0.198,0.863-0.356,1.271c-0.16,0.418-0.365,0.825-0.607,1.21 c-0.238,0.377-0.518,0.739-0.832,1.07l-27.219,28.56c-0.32,0.342-0.663,0.642-1.022,0.898c-0.369,0.264-0.767,0.491-1.183,0.681 c-0.417,0.188-0.851,0.337-1.288,0.44c-0.435,0.104-0.889,0.166-1.35,0.187l-0.125,0.003c-0.423,0.009-0.84-0.016-1.241-0.078 l-0.102-0.02c-0.415-0.07-0.819-0.174-1.205-0.31c-0.421-0.15-0.833-0.343-1.226-0.575l-0.063-0.04 c-0.371-0.224-0.717-0.477-1.032-0.754l-0.063-0.06c-1.58-1.466-3.297-2.958-5.033-4.466c-3.007-2.613-7.178-6.382-9.678-9.02 L34.388,67.984L34.388,67.984z M61.44,0c16.96,0,32.328,6.883,43.453,17.987c11.104,11.125,17.986,26.493,17.986,43.453 c0,16.961-6.883,32.329-17.986,43.454C93.769,115.998,78.4,122.88,61.44,122.88c-16.961,0-32.329-6.882-43.454-17.986 C6.882,93.769,0,78.4,0,61.439C0,44.48,6.882,29.112,17.986,17.987C29.112,6.883,44.479,0,61.44,0L61.44,0z M96.899,25.981 C87.826,16.907,75.29,11.296,61.44,11.296c-13.851,0-26.387,5.611-35.46,14.685c-9.073,9.073-14.684,21.609-14.684,35.458 c0,13.851,5.611,26.387,14.684,35.46s21.609,14.685,35.46,14.685c13.85,0,26.386-5.611,35.459-14.685s14.684-21.609,14.684-35.46 C111.583,47.59,105.973,35.054,96.899,25.981L96.899,25.981z"></path></g></svg></span> Authenticity  Guarantee</div>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-
-          </div>
-        </div>
-    <% else %>
-      <div class="flex attached_files_main mt-[10px] gap-[10px] flex-wrap justify-center mb-[15px] bg-[#80808047] text-[#000] rounded p-[30px] mt-[-8px]" style="border:1px dashed #80808073">
-        No Attachments Found
-      </div>
-    <% end %>   
-
-  </div>
-<% end %>
-<% if current_user.role == "buyer" || current_user.role == "admin" %>
-  <h2 class="text-2xl font-medium Car_Details"> Offers</h2>
-  <% if @seller_listings.present? %>
-      <% @seller_listings.each do |seller_listing|%>
-      <div class="flex attached_files_main mt-[10px] gap-[10px] edit_closed flex-wrap justify-center">
-        
-        <div class="card_main w-full mb-2">
-          <div class="card_body flex w-full" style="align-items: flex-start;">
-            <div class="card_left">
-              <img class="car_image" style="border-radius: 5px; min-height: 70px; height: 92px" src="<%= url_for(seller_listing&.files[0]) rescue nil %>">
-            </div>
-            <div class="card_right">
-              <div class="card_right_sub px-0" style="padding-top: 0px!important">
-                <div class="top">
-                  <div class="title" style="margin-bottom: 0">
-                    <%= "#{seller_listing&.year} #{seller_listing.buyer_listing.make} #{seller_listing.buyer_listing.model}" %>
-                  </div>
-                  <div class="desc flex-row gap-2">
-
-                  <div class="desc_sub desc_trim text-[12px]">
-                    <span> Year: </span> <%= "#{seller_listing&.year}" %>
-                    </div>
-
-                    <div class="desc_sub desc_trim text-[12px]">
-                    <span> Interior Colour: </span> <%= seller_listing&.interior_color %>  
-                    </div>
-
-                    <div class="desc_sub desc_trim text-[12px]">
-                    <span> Exterior Colour: </span> <%= seller_listing&.exterior_color %>  
-                  </div>
-
-                    
-                    <div class="price_main text-[15px] font-semibold mt-[5px]">
-                      $<%= seller_listing&.offered_price %>  
-                    </div>
-                    <div class="desc_sub desc_trim text-[11px]" style="color:  #000">
-                    <div class="flex gap-[5px] hidden"><span><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 122.88 122.88" enable-background="new 0 0 122.88 122.88" xml:space="preserve"><g><path d="M34.388,67.984c-0.286-0.308-0.542-0.638-0.762-0.981c-0.221-0.345-0.414-0.714-0.573-1.097 c-0.531-1.265-0.675-2.631-0.451-3.934c0.224-1.294,0.812-2.531,1.744-3.548l0.34-0.35c2.293-2.185,5.771-2.592,8.499-0.951 c0.39,0.233,0.762,0.51,1.109,0.827l0.034,0.031c1.931,1.852,5.198,4.881,7.343,6.79l1.841,1.651l22.532-23.635 c0.317-0.327,0.666-0.62,1.035-0.876c0.378-0.261,0.775-0.482,1.185-0.661c0.414-0.181,0.852-0.323,1.3-0.421 c0.447-0.099,0.903-0.155,1.356-0.165h0.026c0.451-0.005,0.893,0.027,1.341,0.103c0.437,0.074,0.876,0.193,1.333,0.369 c0.421,0.161,0.825,0.363,1.207,0.604c0.365,0.231,0.721,0.506,1.056,0.822l0.162,0.147c0.316,0.313,0.601,0.653,0.85,1.014 c0.256,0.369,0.475,0.766,0.652,1.178c0.183,0.414,0.325,0.852,0.424,1.299c0.1,0.439,0.154,0.895,0.165,1.36v0.23 c-0.004,0.399-0.042,0.804-0.114,1.204c-0.079,0.435-0.198,0.863-0.356,1.271c-0.16,0.418-0.365,0.825-0.607,1.21 c-0.238,0.377-0.518,0.739-0.832,1.07l-27.219,28.56c-0.32,0.342-0.663,0.642-1.022,0.898c-0.369,0.264-0.767,0.491-1.183,0.681 c-0.417,0.188-0.851,0.337-1.288,0.44c-0.435,0.104-0.889,0.166-1.35,0.187l-0.125,0.003c-0.423,0.009-0.84-0.016-1.241-0.078 l-0.102-0.02c-0.415-0.07-0.819-0.174-1.205-0.31c-0.421-0.15-0.833-0.343-1.226-0.575l-0.063-0.04 c-0.371-0.224-0.717-0.477-1.032-0.754l-0.063-0.06c-1.58-1.466-3.297-2.958-5.033-4.466c-3.007-2.613-7.178-6.382-9.678-9.02 L34.388,67.984L34.388,67.984z M61.44,0c16.96,0,32.328,6.883,43.453,17.987c11.104,11.125,17.986,26.493,17.986,43.453 c0,16.961-6.883,32.329-17.986,43.454C93.769,115.998,78.4,122.88,61.44,122.88c-16.961,0-32.329-6.882-43.454-17.986 C6.882,93.769,0,78.4,0,61.439C0,44.48,6.882,29.112,17.986,17.987C29.112,6.883,44.479,0,61.44,0L61.44,0z M96.899,25.981 C87.826,16.907,75.29,11.296,61.44,11.296c-13.851,0-26.387,5.611-35.46,14.685c-9.073,9.073-14.684,21.609-14.684,35.458 c0,13.851,5.611,26.387,14.684,35.46s21.609,14.685,35.46,14.685c13.85,0,26.386-5.611,35.459-14.685s14.684-21.609,14.684-35.46 C111.583,47.59,105.973,35.054,96.899,25.981L96.899,25.981z"></path></g></svg></span> Authenticity  Guarantee</div>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-
-          </div>
-        </div>
-    
-    
-    
-    <% end %><% else %>
-      <div class="flex attached_files_main mt-[10px] gap-[10px] flex-wrap justify-center mb-[15px] bg-[#80808047] text-[#000] rounded p-[30px] mt-[-8px]" style="border:1px dashed #80808073">
-        No Attachments Found
-      </div>
-    <% end %>  
-
-<% end %>
-
-</div>
-
-<script>
-    function carAttchmentModal() { 
-      document.getElementById('car_attachement_modal').classList.toggle('hidden')
-    }
-
-    // Get the drop zone element
-    var dropZone = document.getElementById('drop_zone');
-
-    // Get the file input element
-    var fileInput = document.getElementById('file_upload');
-
-    // Add event listeners for drag and drop
-    dropZone.addEventListener('dragover', handleDragOver, false);
-    dropZone.addEventListener('dragleave', handleDragLeave, false);
-    dropZone.addEventListener('drop', handleDrop, false);
-
-    // Add event listener for manual file selection
-    fileInput.addEventListener('change', handleFileSelect, false);
-
-    function handleDragOver(event) {
-      event.preventDefault();
-      dropZone.classList.add('border-blue-600');
-    }
-
-    function handleDragLeave(event) {
-      event.preventDefault();
-      dropZone.classList.remove('border-blue-600');
-    }
-
-    function handleDrop(event) {
-      event.preventDefault();
-      dropZone.classList.remove('border-blue-600');
-
-      // Get the dropped files
-      var files = event.dataTransfer.files;
-
-      // Update the label text with the number of files dropped
-      if (files.length === 1) {
-        dropZone.querySelector('span').innerHTML = '1 file attached';
-      } else {
-        dropZone.querySelector('span').innerHTML = files.length + ' files attached';
-      }
-
-      // Add the files to the input element
-      fileInput.files = files;
-    }
-
-    function handleFileSelect(event) {
-      // Get the selected files
-      var files = event.target.files;
-
-      // Update the label text with the number of files selected
-      if (files.length === 1) {
-        dropZone.querySelector('span').innerHTML = '1 file attached';
-      } else {
-        dropZone.querySelector('span').innerHTML = files.length + ' files attached';
-      }
-    }
-
-    $(".submit_car_attachment").click(function(e){
-      e.preventDefault();
-      noError = true
-      if(!$("#year").val()){
-        $(".year_required").removeClass("hidden")
-        noError = false
-      }else{
-        $(".year_required").addClass("hidden")
-      }
-
-      if(!$("#offer_price").val()){
-        $(".offer_price_required").removeClass("hidden")
-        noError = false
-      }else{
-        $(".offer_price_required").addClass("hidden")
-      }
-
-      if(!$("#interior_color").val()){
-        $(".interior_color_required").removeClass("hidden")
-        noError = false
-      }else{
-        $(".interior_color_required").addClass("hidden")
-      }
-
-      if(!$("#exterior_color").val()){
-        $(".exterior_color_required").removeClass("hidden")
-        noError = false
-      }else{
-        $(".exterior_color_required").addClass("hidden")
-      }
-
-      if(noError){
-        $("#car_attachment_form").submit();
-      }
-    })
-</script>
-
- 
-
+                                            function handleFileSelect(event) {
+                                                // Get the selected files
+                                                var files = event.target.files;
+                                                // Update the label text with the number of files selected
+                                                if (files.length === 1) {
+                                                    dropZone.querySelector('span').innerHTML = '1 file attached';
+                                                }
+                                                else {
+                                                    dropZone.querySelector('span').innerHTML = files.length + ' files attached';
+                                                }
+                                            }
+                                            $(".submit_car_attachment").click(function (e) {
+                                                e.preventDefault();
+                                                noError = true
+                                                if (!$("#year").val()) {
+                                                    $(".year_required").removeClass("hidden")
+                                                    noError = false
+                                                }
+                                                else {
+                                                    $(".year_required").addClass("hidden")
+                                                }
+                                                if (!$("#offer_price").val()) {
+                                                    $(".offer_price_required").removeClass("hidden")
+                                                    noError = false
+                                                }
+                                                else {
+                                                    $(".offer_price_required").addClass("hidden")
+                                                }
+                                                if (!$("#interior_color").val()) {
+                                                    $(".interior_color_required").removeClass("hidden")
+                                                    noError = false
+                                                }
+                                                else {
+                                                    $(".interior_color_required").addClass("hidden")
+                                                }
+                                                if (!$("#exterior_color").val()) {
+                                                    $(".exterior_color_required").removeClass("hidden")
+                                                    noError = false
+                                                }
+                                                else {
+                                                    $(".exterior_color_required").addClass("hidden")
+                                                }
+                                                if (noError) {
+                                                    $("#car_attachment_form").submit();
+                                                }
+                                            })
+                                        </script>

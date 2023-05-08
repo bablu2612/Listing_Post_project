@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
+*{
+    font-family: 'circular';
+}
  .Create_Car{
     margin: 35px 0 40px 0;
 }
@@ -30,7 +32,8 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
-    max-width: calc(100% - 145px);
+    max-width: calc(100% - 110px);
+    padding-left: 10px;
 }
 
 .card_body.flex {
@@ -55,12 +58,23 @@
     aspect-ratio: 1/1;
     z-index: -1;
 } 
-
-.card_left {
-    max-width: 160px;
+.attached_files_main .card_left {
+    background: #f1f1f1;
+    padding: 10px;
+    max-width: 110px;
+    border-radius: 10px;
     width: 100%;
     height: 100%;
 }
+
+.card_left{
+    max-width: 160px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+}
+ 
 
 .card_left img.car_image {
     height: 100%;
@@ -92,14 +106,43 @@
     color: #000000d9;
     padding: 0;
 }
+[id*="buyer_listing"] .grid>div>p {
+    background: #fcfcfc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.04);
+}
+.card_body {
+    border: 1px solid #f3f3f3;
+    border-radius: 10px;
+    padding: 10px;
+}
+button.box-content:hover {
+    transform: scale(1.1);
+}
 
+button.box-content {
+    background: #f3f3f3;
+    border-radius: 5px;
+}
 @media only screen and (max-width: 600px) {
-
+  
 .card_right_sub {
     padding: 15px 15px !important;
 }
 .gap-icon {
     gap: 1px!important;
+}
+.Car_Details { 
+    padding-left: 10px;
+}
+.seller_list_form [role="dialog"]{ 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 90vw;
 }
 }
 
