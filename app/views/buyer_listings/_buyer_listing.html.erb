@@ -162,7 +162,8 @@
                         <div class="flex attached_files_main mt-[10px] gap-[10px] edit_closed flex-wrap justify-center">
                             <div class="card_main w-full mb-2">
                                 <div class="card_body flex w-full" style="align-items: flex-start;">
-                                    <div class="card_left"> <img class="car_image" style="border-radius: 5px; min-height: 70px; height: 92px" src="<%= url_for(@seller_listing&.files[0]) rescue nil %>"> </div>
+                                    <%= render "buyer_listings/image_gallery", images: @seller_listing.files, id: @seller_listing.id %>
+                                    <div class="card_left"> <img class="car_image show_overlay" onclick="showOverlay(<%= @seller_listing.id %>)" style="border-radius: 5px; min-height: 70px; height: 92px" src="<%= url_for(@seller_listing&.files[0]) rescue nil %>"> </div>
                                     <div class="card_right">
                                         <div class="card_right_sub px-0 pt-0 pb-0">
                                             <div class="top">
@@ -200,10 +201,11 @@
                                 <h2 class="text-2xl font-medium Car_Details"> Offers</h2>
                                 <% if @seller_listings.present? %>
                                     <% @seller_listings.each do |seller_listing|%>
+                                        <%= render "buyer_listings/image_gallery", images: seller_listing.files, id: seller_listing.id %>
                                         <div class="flex attached_files_main mt-[10px] gap-[10px] edit_closed flex-wrap justify-center">
                                             <div class="card_main w-full mb-2">
                                                 <div class="card_body flex w-full" style="align-items: flex-start;">
-                                                    <div class="card_left"> <img class="car_image" style="border-radius: 5px; min-height: 70px; height: 92px" src="<%= url_for(seller_listing&.files[0]) rescue nil %>"> </div>
+                                                    <div class="card_left"> <img class="car_image show_overlay" onclick="showOverlay(<%= seller_listing.id %>)" style="border-radius: 5px; min-height: 70px; height: 92px" src="<%= url_for(seller_listing&.files[0]) rescue nil %>"> </div>
                                                     <div class="card_right">
                                                         <div class="card_right_sub px-0" style="padding-top: 0px!important">
                                                             <div class="top">
