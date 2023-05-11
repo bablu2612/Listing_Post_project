@@ -1,6 +1,7 @@
 class BuyerListingsController < ApplicationController
   before_action :set_buyer_listing, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
+  skip_before_action :authenticate_user!, only: %i[show]
   # GET /buyer_listings or /buyer_listings.json
   def index
     if current_user.role == "buyer"

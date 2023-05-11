@@ -29,7 +29,7 @@
     }
   }
   
-  #overlay {
+  .overlay {
     background: rgba(0,0,0,0.7);
     width: 100%;
     height: 100%;
@@ -60,7 +60,7 @@
     }
   }
   
-  #nextButton {
+  .nextButton {
     color: #fff;
     font-size: 2em;
     transition: opacity 0.8s;
@@ -72,7 +72,7 @@
     }
   }
   
-  #prevButton {
+  .prevButton {
     color: #fff;
     font-size: 2em;
     transition: opacity 0.8s;
@@ -84,7 +84,7 @@
     }
   }
   
-  #exitButton {
+  .exitButton {
     color: #fff;
     font-size: 2em;
     transition: opacity 0.8s;
