@@ -5,7 +5,7 @@ class BuyerListingsController < ApplicationController
   # GET /buyer_listings or /buyer_listings.json
   def index
     if current_user&.role == "buyer"
-      @buyer_listings = current_user.buyer_listings.all.order(created_at: :desc).paginate(page: params[:page], per_page: 1)
+      @buyer_listings = current_user.buyer_listings.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     else
       redirect_to root_path
     end

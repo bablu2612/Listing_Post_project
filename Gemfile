@@ -60,6 +60,9 @@ gem "tailwindcss-rails", "~> 2.0"
 
 gem 'friendly_id', '~> 5.4.0'
 
+gem "pg", "~> 1.5"
+
 gem "pry", "~> 0.14.2"
 
 gem "will_paginate", "~> 3.3"
+
