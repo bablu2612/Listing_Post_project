@@ -57,13 +57,18 @@ class SellersController < ApplicationController
 
   def offer_action
     
+    if params[:value] == 'false' || params[:value] == false
+      @seller_listing= SellerListing.find(params[:id])
+      @seller_listing.destroy
+    else
+      @seller_listing= SellerListing.find(params[:id])
+      @seller_listing.is_accepted = params[:value] == 'true' ? true : false
+      @seller_listing.save
 
-    @seller_listing= SellerListing.find(params[:id])
-    @seller_listing.is_accepted = params[:value] == 'true' ? true : false
-    @seller_listing.save
+    end
+    
+    render json: {status: 200,message: (params[:value] == 'true' || params[:value] == true) ? "offer is sucessfully updated" : 'offer is sucessfully deleted'}
 
-
-    render json: {status: 200,message: "sucessfully updated",data: @seller_listing}
 
   end
 

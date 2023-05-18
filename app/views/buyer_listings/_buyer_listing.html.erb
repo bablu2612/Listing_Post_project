@@ -49,7 +49,7 @@
     </div>
     <% if current_user&.role == "seller" %>
         <div class="car_attachement">
-            <h2 class="text-xl sm:text-2xl font-bold Car_Details">Seller Offers</h2>
+            <h2 class="text-xl sm:text-2xl font-bold Car_Details">Offer</h2>
             <div class="car_attachment_button_main flex justify-end mb-2"> 
             
                 <button class="text-[#4e4a4a] p-2 bg-gray-100 rounded edit_attachments flex justify-end items-center gap-[5px]" onclick="carAttchmentModal()">
@@ -234,7 +234,7 @@
                                 </div>
                             </div>
                             <% else %>
-                                <div class="flex attached_files_main mt-[10px] gap-[10px] flex-wrap justify-center mb-[15px] bg-[#80808047] text-[#000] rounded p-[30px] mt-[-8px]" style="border:1px dashed #80808073"> No Attachments Found </div>
+                                <div class="flex attached_files_main mt-[10px] gap-[10px] flex-wrap justify-center mb-[15px] bg-[#80808047] text-[#000] rounded p-[30px] mt-[-8px]" style="border:1px dashed #80808073"> No Offers Found </div>
                                 <% end %>
                         </div>
                         <% end %>
@@ -244,7 +244,7 @@
                             <% if @seller_listings.present? %>
                                 <% @seller_listings.each do |seller_listing|%>
                                 
-                                   <div class="<%= (current_user&.role != "admin" && seller_listing.is_accepted == 0) ? 'hidden' : 'active'  %>">
+                                   <div class="<%= (current_user&.role != "admin" && seller_listing.is_accepted == false) ? 'hidden' : 'active'  %>">
 
                                         <%= render "buyer_listings/image_gallery", images: seller_listing.files, id: seller_listing.id %>
                                         <div class="flex attached_files_main mt-[10px] gap-[10px] edit_closed flex-wrap justify-center">
@@ -291,7 +291,7 @@
                                     </div>
                                 <% end %>
                             <% else %>
-                                <div class="flex attached_files_main mt-[10px] gap-[10px] flex-wrap justify-center mb-[15px] bg-[#80808047] text-[#000] rounded p-[30px] mt-[-8px]" style="border:1px dashed #80808073"> No Attachments Found </div>
+                                <div class="flex attached_files_main mt-[10px] gap-[10px] flex-wrap justify-center mb-[15px] bg-[#80808047] text-[#000] rounded p-[30px] mt-[-8px]" style="border:1px dashed #80808073"> No Offers Found </div>
                             <% end %>
                         <% end %>
                                         
@@ -424,25 +424,31 @@
 
     $(".action_fire").click(function () {
 
+        if(confirm($(this).data('value') == true ? "Are you sure you want approve this offer?" : "Are you sure you want delete this offer?")){
 
-    let data = {id: $(this).attr('id'),value: $(this).data('value') }
-    console.log('data',data)
+              let data = {id: $(this).attr('id'),value: $(this).data('value') }
 
-    $.ajax({
-        type: "post",
-        data: data,
-        url: "/offer_action",
-        success: function(data) { 
-            if(data.status === 200){
-               
-            $(".success-message").html('record sucessflly updated');
+                $.ajax({
+                    type: "post",
+                    data: data,
+                    url: "/offer_action",
+                    success: function(data) { 
+                        if(data.status === 200){
+                        
+                        $(".success-message").html(data.message);
 
-                console.log('offer_action')
-            }else{
+                        }else{
 
-            }
-        }
-    })
+                        }
+                    }
+                })
+    }
+    else{
+        return false;
+    }
+
+
+    
     
 })
     
