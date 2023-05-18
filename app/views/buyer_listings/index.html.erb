@@ -64,18 +64,10 @@
 
 
 <%= render "layouts/welcome"%>
-
-
-
-
-
-
-
-	
-
+ 
 
 	<div class="page-heading wow fadeIn " data-wow-duration="0.5s">
-		<div class="container mb-4">
+		<div class="container ">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="heading-content-bg wow fadeIn" data-wow-delay="0.75s" data-wow-duration="1s">
@@ -124,7 +116,7 @@
 											<div class="down-content">
                       
 												<a href="<%= buyer_listing_path(buyer_listing.id) %>"><h4> <%= "#{buyer_listing.min_year} - #{buyer_listing.max_year} #{buyer_listing.make} #{buyer_listing.model} #{buyer_listing.trim}" %></h4></a>
-                         <div>Mileage: <b><%= buyer_listing.mileage %></b></div>
+                         <div class="milage"><span>Mileage:</span> <b><%= buyer_listing.mileage %></b></div>
 												<span><%= "$#{number_with_delimiter(buyer_listing.min_price)} - $#{number_with_delimiter(buyer_listing.max_price)}" %></span>
 												<div class="line-dec"></div>
                        

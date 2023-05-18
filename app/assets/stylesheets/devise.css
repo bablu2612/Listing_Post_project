@@ -1,367 +1,385 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body,
+* {
+  font-family: "Inter", sans-serif;
+}
+
 .form-group.mb-4.name_div {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 .form-group.mb-4.name_div .sub_name_div {
-    width: 100%;
+  width: 100%;
 }
 
-
-
-@media(max-width: 767px)
-{
-    .form-group.mb-4.name_div {
-        flex-wrap: wrap;
-      } 
+@media (max-width: 767px) {
+  .form-group.mb-4.name_div {
+    flex-wrap: wrap;
+  }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
-  font-family: 'Poppins', sans-serif;
+form :where(input, select) {
+  width: 100%;
+  outline: none;
+  display: block;
+  color: #6e7684;
+  font-size: 16px;
+  padding: 0px 20px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid #d8d8d8;
+  transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  height: 50px;
+  box-shadow: 0 5px 5px 0 #0000000d !important;
 }
-    form :where(input, select) {
-        width: 100%;
-        outline: none;
-        display: block;
-        color: #6E7684;
-        font-size: 16px;
-        padding: 0px 20px;
-        border-radius: 4px;
-        background-color: #ffffff; 
-        border: 1px solid #D8D8D8;
-        transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        height: 50px;
-        box-shadow: 0 5px 5px 0 #0000000d !important;
-    } 
-   
-    .main-wrapper {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        width: 100%;
-    }
-    
-    .form-group label {
-        font-weight: 600;
-        font-size: 16px;
-        font-family: poppins;
-    }
-    label[for="car_id"] {
-    display: none;
-} 
+
 .main-wrapper {
-    margin-bottom: 70px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  width: 100%;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+label[for="car_id"] {
+  display: none;
+}
+.main-wrapper {
+  margin-bottom: 70px;
 }
 label.selec_de {
-    font-weight: 500;
-    text-transform: uppercase;
-    text-align: center;
-    display: block;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
 }
 .autocomplete_options {
-    width: 100%;
-    max-width: 440px;
+  width: 100%;
+  max-width: 440px;
 }
 .deal {
-    max-width: 500px;
-    margin: 0 auto 40px;
-    background: #f7f7f7;
-    border-radius: 10px;
-    padding: 30px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 30px;
 }
 h2 {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 30px;
-    margin: 20px 0;
-    border-left: 5px solid #000;
-    padding-left: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 30px;
+  margin: 20px 0;
+  border-left: 5px solid #000;
+  padding-left: 20px;
 }
-.nav-cstm>a {
-    margin: 0 auto;
-    display: inline-block;
+.nav-cstm > a {
+  margin: 0 auto;
+  display: inline-block;
 }
 
 .nav-cstm {
-    text-align: center;
+  text-align: center;
 }
 input.w-fit[type="submit"] {
-    min-height: 55px;
-    margin: 0 auto;
-    display: flex;
+  min-height: 55px;
+  margin: 0 auto;
+  display: flex;
 }
 .selected_users .selected_user_name {
-    max-width: calc(100%/3 - 10px);
+  max-width: calc(100% / 3 - 10px);
 }
-.similar_list, .main-wrapper,.autocomplete_main  {
-    padding: 40px;
-    border-radius: 15px;
-    background: url('http://futureshapers.co.in/wp-content/uploads/2022/11/pattern.jpg');
-    background-size: contain;
-    background-position: center;
-    box-shadow: 0px 6px 10px rgb(0 0 0 / 10%);
-    border: 1px solid #f7f7f7;
+.similar_list,
+.main-wrapper,
+.autocomplete_main {
+  padding: 40px;
+  border-radius: 15px;
+  background: url("http://futureshapers.co.in/wp-content/uploads/2022/11/pattern.jpg");
+  background-size: contain;
+  background-position: center;
+  box-shadow: 0px 6px 10px rgb(0 0 0 / 10%);
+  border: 1px solid #f7f7f7;
 }
 .nav-cstm {
-    margin: 40px 0;
+  margin: 40px 0;
 }
-.nav-cstm a{
-    background: #000;color: #fff;
-    text-decoration: none;margin-left: 0;transition: 0.3 ease all;margin-top: 40px;
+.nav-cstm a {
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 0;
+  transition: 0.3 ease all;
+  margin-top: 40px;
 }
-.nav-cstm a:hover{
+.nav-cstm a:hover {
   background: #000;
 }
- 
-/* 07-01-2023 */
- 
-.form-group label {
-    text-transform: uppercase;
-} 
 
+/* 07-01-2023 */
+
+.form-group label {
+  text-transform: uppercase;
+}
 
 .similar_list form .form-group {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .similar_list form {
-    max-width: calc(100%/3 - 15px);
-    flex: calc(100%/3 - 15px);
-    width: 100%;
-    border: 1px solid #ddd;
-    padding: 25px; 
-    display: grid;
-    grid-template-columns: repeat(1, 1fr); 
-    width: 100%;
-    justify-self: stretch;
+  max-width: calc(100% / 3 - 15px);
+  flex: calc(100% / 3 - 15px);
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 25px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  justify-self: stretch;
 }
 .similar_list form .form-group:last-child {
-    margin-top: 0;
+  margin-top: 0;
 }
 .similar_list {
-    flex-wrap: wrap;
-    display: flex;
-    gap: 30px 22px;
-    justify-content: flex-start;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 30px 22px;
+  justify-content: flex-start;
 }
-.similar_list input[type="hidden"]+.form-group {
-    margin-top: 0;
+.similar_list input[type="hidden"] + .form-group {
+  margin-top: 0;
 }
-
 
 .similar_list form {
-    max-width: calc(100%/3 - 15px);
-    flex: calc(100%/3 - 15px);
-    border: 1px solid #ddd;
-    padding: 25px;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    width: 100%;
-    justify-self: stretch;
-    background: #ffffffad;
+  max-width: calc(100% / 3 - 15px);
+  flex: calc(100% / 3 - 15px);
+  border: 1px solid #ddd;
+  padding: 25px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  justify-self: stretch;
+  background: #ffffffad;
 }
-.main-wrapper>.form-group:not(:last-child) {
-    margin-bottom: 15px;
+.main-wrapper > .form-group:not(:last-child) {
+  margin-bottom: 15px;
 }
-@media (max-width: 1280px){
- 
-h2 { 
-    font-size: 24px;  
+@media (max-width: 1280px) {
+  h2 {
+    font-size: 24px;
     padding-left: 15px;
-}
+  }
 
-.main-wrapper {
+  .main-wrapper {
     margin-bottom: 50px;
-}
-.similar_list, .main-wrapper {
+  }
+  .similar_list,
+  .main-wrapper {
     padding: 30px;
+  }
 }
-   
-}
-@media (max-width: 991px){
-.similar_list form {
-    max-width: calc(100%/2 - 15px);
-    flex: calc(100%/2 - 15px); 
-}
-.main-wrapper { 
+@media (max-width: 991px) {
+  .similar_list form {
+    max-width: calc(100% / 2 - 15px);
+    flex: calc(100% / 2 - 15px);
+  }
+  .main-wrapper {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px; 
+    gap: 20px;
+  }
 }
 
-}
-
-@media (max-width: 767px){ 
-    .similar_list form {
-        max-width: 100%;
-        flex: 100%;
-    }
-    .similar_list, .main-wrapper{
-        padding: 20px;
-    }
-    h2 { 
-        font-size: 20px; 
-        padding-left: 10px;
-    }
-    .similar_list {
-        gap: 0;
-    }
-    .main-wrapper {
-        margin-bottom: 40px;     display: block;
-    }
-    .similar_list form:not(:last-child) {
-        margin-bottom: 20px;
-    }
+@media (max-width: 767px) {
+  .similar_list form {
+    max-width: 100%;
+    flex: 100%;
+  }
+  .similar_list,
+  .main-wrapper {
+    padding: 20px;
+  }
+  h2 {
+    font-size: 20px;
+    padding-left: 10px;
+  }
+  .similar_list {
+    gap: 0;
+  }
+  .main-wrapper {
+    margin-bottom: 40px;
+    display: block;
+  }
+  .similar_list form:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
 
 .rate {
-    height: 46px;
-    padding: 0;
-    margin-top: 8px;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: start;
+  height: 46px;
+  padding: 0;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
 }
-.rate:not(:checked) > input, .rate .field_with_errors:not(:checked) > input {
-    display: none;
+.rate:not(:checked) > input,
+.rate .field_with_errors:not(:checked) > input {
+  display: none;
 }
 .rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
 }
 .rate:not(:checked) > label:before {
-    content: '★ ';
+  content: "★ ";
 }
-.rate > input:checked ~ label, .field_with_errors > input:checked ~ label  {
-    color: #ffc700 !important;    
+.rate > input:checked ~ label,
+.field_with_errors > input:checked ~ label {
+  color: #ffc700 !important;
 }
-.rate:not(:checked) > label:hover , .field_with_errors:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label, .field_with_errors:not(:checked) > label:hover ~ label {
-    color: #deb217;  
+.rate:not(:checked) > label:hover,
+.field_with_errors:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label,
+.field_with_errors:not(:checked) > label:hover ~ label {
+  color: #deb217;
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
+  color: #c59b08;
 }
 
 .w-\[33\.33\%\] {
-    width: 33.33%;
-    flex: 0 0 30% !important;
+  width: 33.33%;
+  flex: 0 0 30% !important;
 }
 
 .row1.flex.justify-between.gap-3.align-content-center {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
-@media(max-width:567px){
-
-form#create_form .main_div {
+@media (max-width: 567px) {
+  form#create_form .main_div {
     padding: 2rem !important;
-}
+  }
 
-.w-\[33\.33\%\] {
+  .w-\[33\.33\%\] {
     width: 33.33%;
     flex: 0 0 45% !important;
-}
+  }
 
-form#create_form .main_div .flex {
+  form#create_form .main_div .flex {
     flex-wrap: wrap;
-}
-.bg-#4e4a4a-50 {
+  }
+  .bg-#4e4a4a-50 {
     font-size: 13px;
-}
+  }
 }
 
 .download_button {
-    position: fixed;
-    right: 10px;
-    top: 10px; 
-      background: #406ae8;
-      border-radius: 5px;
-      padding: 10px 20px; 
-      display: flex;
-      gap: 10px;
-  }
-  .download_button a { 
-    color: #fff; 
-    text-decoration: none;
-    font-weight: 500; 
-    background: none; 
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  background: #406ae8;
+  border-radius: 5px;
+  padding: 10px 20px;
+  display: flex;
+  gap: 10px;
+}
+.download_button a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  background: none;
 }
 .download_button i.fa.fa-download {
-    color: #fff;
+  color: #fff;
 }
-.signup_parent { 
-    box-shadow: 0px 4px 25px rgb(79 139 173 / 15%);
-    background: url('https://templates.hibotheme.com/motoz/default/assets/img/app/app-shape-1.webp') no-repeat;
-    background-size: contain;
-    background-position: right;
-    background-color: #fff;
+.signup_parent {
+  box-shadow: 0px 4px 25px rgb(79 139 173 / 15%);
+  background: url("https://templates.hibotheme.com/motoz/default/assets/img/app/app-shape-1.webp")
+    no-repeat;
+  background-size: contain;
+  background-position: right;
+  background-color: #fff;
 }
 .signup_parent h2 {
-    font-size: 24px;
-    color: #0d6efd;
-    margin-bottom: 15px;
+  font-size: 24px;
+  color: #000;
+  margin-bottom: 25px;
 }
 .signup_parent a {
-    color: var(--bs-link-color);
+  color: var(--bs-link-color);
 
-    background: none;
+  background: none;
 }
 .mainbx {
-    top: 0;
-    width: 100%;
-    bottom: 0;
-    opacity: 1;
-    z-index: 999;
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 0;
-    background: #f5f5f5;
-    overflow: hidden; 
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  opacity: 1;
+  z-index: 999;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  background: #f5f5f5;
+  overflow: hidden;
 }
-.mainbx:before{
-        content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 50%;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 15px;
-    border-radius: 0 100% 100% 0; 
-       background: #fff;
-        background: linear-gradient(90deg, rgba(113,170,255,1) 0%, rgba(80,135,217,1) 24%, rgba(41,95,173,1) 52%, rgba(0,58,143,1) 100%);
-    background-size: 400% 400%;
-    animation: Gradient 15s ease infinite;
-    } 
+.mainbx:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 50%;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+  border-radius: 0 100% 100% 0;
+  background: #fff;
+  background: linear-gradient(
+    90deg,
+    rgba(113, 170, 255, 1) 0%,
+    rgba(80, 135, 217, 1) 24%,
+    rgba(41, 95, 173, 1) 52%,
+    rgba(0, 58, 143, 1) 100%
+  );
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+}
 @keyframes Gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
- 
- 
-@media (max-width: 767px){
+
+.signup_parent.rounded {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 767px) {
   .download_button a {
     font-size: 0;
     position: absolute;
@@ -369,9 +387,9 @@ form#create_form .main_div .flex {
     height: 100%;
     left: 0;
     top: 0;
-}
-.download_button{
-  right: 0;padding: 10px 15px;
-}
-
+  }
+  .download_button {
+    right: 0;
+    padding: 10px 15px;
+  }
 }

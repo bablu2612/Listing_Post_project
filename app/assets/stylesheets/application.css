@@ -13,136 +13,228 @@
  *= require_tree .
  *= require_self
  */
-*{
-    font-family: 'circular';
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body,
+* {
+  font-family: "Inter", sans-serif;
 }
- .Create_Car{
-    margin: 35px 0 40px 0;
+.Create_Car {
+  margin: 35px 0 40px 0;
 }
-.Car_Details{
-    margin: 16px 0 40px 0;
+.Car_Details {
+  margin: 16px 0 40px 0;
 }
 
- .gap-icon{
-    gap: 1rem;
- }
+.gap-icon {
+  gap: 1rem;
+}
 
- .card_right {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    max-width: calc(100% - 110px);
-    padding-left: 10px;
+.card_right {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  max-width: calc(100% - 110px);
+  padding-left: 10px;
 }
 
 .card_body.flex {
-    align-items: center;
+  align-items: center;
 }
- 
+.card_main .card_body.flex {
+  align-items: flex-start;
+}
 .loss {
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
 }
 
 .card_right:after {
-    content: "";
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    /* background: #5f00e817; */
-    right: -30px;
-    top: -30px;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
-    z-index: -1;
-} 
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  /* background: #5f00e817; */
+  right: -30px;
+  top: -30px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  z-index: -1;
+}
 .attached_files_main .card_left {
-    background: #f1f1f1;
-    padding: 10px;
-    max-width: 110px;
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
+  background: #f1f1f1;
+  padding: 10px;
+  max-width: 110px;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
 }
 
-.card_left{
-    max-width: 160px;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-
+.card_left {
+  max-width: 160px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
 }
- 
 
 .card_left img.car_image {
-    height: 100%;
-    object-fit: cover;
-    min-height: 200px;
+  height: 100%;
+  object-fit: cover;
+  min-height: 90px;
 }
 
- 
-.desc>.desc_sub {
-    color: #686868;
+.desc > .desc_sub {
+  color: #333;
 }
 
 .card_right_sub .title {
-    color: #000000d9;margin-bottom: 5px;
+  color: #000000d9;
+  margin-bottom: 5px;
 }
- 
-.desc>.desc_sub span {
-    font-weight: 600;
+
+.desc > .desc_sub span {
+  font-weight: 600;
 }
 
 .icon_sub {
-    /* background: #efe4ff; */
-    border-radius: 50%;
-    aspect-ratio: 1/1;
-    width: 40px;
-    height: 40px;
-    display: inline-grid;
-    place-content: center;
-    color: #000000d9;
-    padding: 0;
+  /* background: #efe4ff; */
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-content: center;
+  color: #000000d9;
+  padding: 0;
 }
-[id*="buyer_listing"] .grid>div>p {
-    background: #fcfcfc;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.04);
+[id*="buyer_listing"] .grid > div > p {
+  background: #efefef;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
 }
 .card_body {
-    border: 1px solid #f3f3f3;
-    border-radius: 10px;
-    padding: 10px;
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  padding: 10px;
 }
 button.box-content:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 button.box-content {
-    background: #f3f3f3;
-    border-radius: 5px;
+  background: #f3f3f3;
+  border-radius: 5px;
 }
 @media only screen and (max-width: 600px) {
-  
-.card_right_sub {
+  .card_right_sub {
     padding: 15px 15px !important;
-}
-.gap-icon {
-    gap: 1px!important;
-}
-.Car_Details { 
+  }
+  .gap-icon {
+    gap: 1px !important;
+  }
+  .Car_Details {
     padding-left: 10px;
-}
-.seller_list_form [role="dialog"]{ 
+  }
+  .seller_list_form [role="dialog"] {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
     max-width: 90vw;
-}
+  }
 }
 
+/* today 15-5-23 */
+.Car_Details {
+  font-size: 20px;
+  background: #f1f1f1;
+  padding: 0 15px;
+}
+.desc > .desc_sub span {
+  font-weight: 600;
+  color: #407af5;
+  font-family: "Inter", sans-serif;
+}
+a.btn.btn-cstm {
+  border: 2px solid #000;
+}
+
+a.btn.btn-cstm:hover {
+  background: #fff !important;
+  color: #000 !important;
+}
+html,
+body,
+main {
+  height: 100%;
+}
+
+.signup_parent {
+  margin: auto;
+  display: block;
+}
+a.signUp,
+.orcstm {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  z-index: 6;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+.signup_parent br {
+  display: none;
+}
+.admin_actions svg {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  color: #4078f5;
+}
+.orcstm:after {
+  content: "";
+  background: #fff;
+  width: 100%;
+  max-width: 100px;
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 0;
+  height: 30px;
+  transform: translateX(-50%);
+}
+.orcstm:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #000;
+  height: 1px;
+  width: 100%;
+  z-index: -1;
+}
+@media (max-width: 767px) {
+  div#buyer_listing_3 {
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+  }
+  .Car_Details {
+    font-size: 16px;
+  }
+  div#buyer_listing_3 .grid.grid-cols-2 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  [id*="buyer_listing"] .grid > div > p strong.block {
+    margin: 0 !important;
+  }
+  [id*="buyer_listing"] .grid > div > p {
+    display: flex;
+    gap: 10px;
+  }
+}
