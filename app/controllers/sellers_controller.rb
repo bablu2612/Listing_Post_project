@@ -5,7 +5,7 @@ class SellersController < ApplicationController
   # GET /buyer_listings or /buyer_listings.json
   def index
 
-    @buyer_listings = current_user.buyer_listings.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @buyer_listings = current_user.buyer_listings.all.order(created_at: :desc).paginate(page: params[:page], per_page: 1)
 
     # @buyer_listings = BuyerListing.all.joins(:seller_listings).where("seller_listings.user_id = #{current_user.id}").order(created_at: :desc)
   end
