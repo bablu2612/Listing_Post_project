@@ -238,3 +238,18 @@ a.signUp,
     gap: 10px;
   }
 }
+
+.success-message {
+  display: none;
+	background-color: #0080003d;
+	text-transform: capitalize;
+	padding: 8px;
+	color: #065906;
+	font-weight: 500;
+	border-radius: 8px;
+	margin-bottom: 10px;
+}
+
+.approve.action_fire.disable svg {
+	color: #096809;
+}

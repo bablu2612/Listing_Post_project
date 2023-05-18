@@ -1,0 +1,4 @@
+$(".seller_listings_main").html("<%= j(render  "/partials/buyer_listings/seller_listings", buyer_listing: @seller_listing.buyer_listing  )%>")
+
+$(".success-message").html("<%= @message %>")
+$(".success-message").css("display", "block")

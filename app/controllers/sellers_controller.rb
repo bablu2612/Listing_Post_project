@@ -66,8 +66,12 @@ class SellersController < ApplicationController
       @seller_listing.save
 
     end
-    
-    render json: {status: 200,message: (params[:value] == 'true' || params[:value] == true) ? "offer is sucessfully updated" : 'offer is sucessfully deleted'}
+    @seller_listings = @seller_listing.buyer_listing.seller_listings
+    @message = (params[:value] == 'true' || params[:value] == true) ? "offer is sucessfully updated" : 'offer is sucessfully deleted'
+    respond_to do |format|
+      format.js
+    end
+    # render json: {status: 200,message: (params[:value] == 'true' || params[:value] == true) ? "offer is sucessfully updated" : 'offer is sucessfully deleted'}
 
 
   end
