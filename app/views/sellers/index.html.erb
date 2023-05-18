@@ -47,78 +47,192 @@
     color: #000000d1;
 }
 </style>
+
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="/assets/custom/css/bootstrap.css">
+	<link rel="stylesheet" href="/assets/custom/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/custom/css/main.css">
+	<!-- Slider Pro Css -->
+	<link rel="stylesheet" href="/assets/custom/css/sliderPro.css">
+	<!-- Owl Carousel Css -->
+	<link rel="stylesheet" href="/assets/custom/css/owl-carousel.css">
+	<!-- Flat Icons Css -->
+	<link rel="stylesheet" href="/assets/custom/css/flaticon.css">
+	<!-- Animated Css -->
+	<link rel="stylesheet" href="/assets/custom/css/animated.css">
+
+
 <%= render "layouts/welcome"%>
 
-<div class="listings_main w-full">
-
-<div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6 w-full">
-  <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
-    <div class="ml-4 mt-2">
-      <h2 class="text-base font-semibold leading-6 text-gray-900"><%= current_user.role=="seller" || current_user.role=="admin" ? "Cars Listings" : "Your Listings" %></h2>
-    </div>
-    <div class="ml-4 mt-2 flex-shrink-0">
-
-      <button type="button" class=" hidden relative inline-flex items-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create new Listing</button>
-    </div>
-  </div>
-</div>
-
- 
 
 
-  <div class="listings_sub">
-    <% if @buyer_listings.count == 0 %>
-      <div class="no_listings"> No Listing Found</div>
-    <% end %>
-    <% @buyer_listings.each do |buyer_listing| %>
-      <div class="card_main w-full mb-2">
-        <div class="card_body flex w-full">
-          <div class="card_left">
-            <img class="car_image" src="<%= asset_url("no_car_image.jpg") %>">
-          </div>
-          <div class="card_right">
-            <div class="card_right_sub">
-              <div class="top">
-                <div class="title">
-                  <%= "#{buyer_listing.min_year}-#{buyer_listing.max_year} #{buyer_listing.make} #{buyer_listing.model}" %>
+
+
+
+
+	
+
+
+	<div class="page-heading wow fadeIn " data-wow-duration="0.5s">
+		<div class="container header-content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="heading-content-bg wow fadeIn" data-wow-delay="0.75s" data-wow-duration="1s">
+						<div class="row">
+							<div class="heading-content col-md-12 flex">
+								<h2 class="text-black"> Cars Listing</h2>
+                  <div class="col-md-4">
+                    <%= link_to "Create new Listing", new_buyer_listing_path, method: :get, class: "no-underline relative inline-flex items-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
                 </div>
-                <div class="desc flex-row gap-2">
-                  <div class="desc_sub desc_trim">
-                   <span> Year: </span> <%= "#{buyer_listing.min_year} - #{buyer_listing.max_year}" %>  
-                  </div>
-                  <div class="desc_sub desc_trim">
-                   <span> Make: </span> <%= buyer_listing.make %>  
-                  </div>
-                  <div class=" desc_sub desc_milage">
-                    <span> Model:</span>  <%= buyer_listing.model %> 
-                  </div>
-                   <div class="price_main mt-2">
-                    <%= "$#{buyer_listing.min_price} - $#{buyer_listing.max_price}" %>
-                  </div>
-                </div>
-              </div>
-              <div class="loss mt-3">
-              <div class="bottom">  
-                <div class="right flex gap-2">
-                  <div class="icons flex gap-3">
-                    <div class="icon_sub">
-                      <i class="fa fa-usd" aria-hidden="true"></i>
+							</div>
+					  </div>
+				 </div>
+			 </div>
+		 </div>
+	 </div>
+
+	<div class="on-listing wow fadeIn" data-wow-delay="0.5s" data-wow-duration="1s">
+		<div class="container">
+			<div class="recent-car-content">
+				<div class="row">
+
+           <% if notice.present? %>
+            <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+            <% end %>
+
+            <% if @buyer_listings.count == 0 %>
+              <div class="no_listings"> No Listing Found</div>
+            <% end %>
+
+					<div class="col-md-8">
+						<div class="row">
+ <% @buyer_listings.each do |buyer_listing| %>
+							<div class="col-md-12">
+								<div class="car-item">
+									<div class="row">
+										<div class="col-md-5">
+											<div class="thumb-content">
+												
+												<div class="thumb-inner">
+
+													<a href="<%= buyer_listing_path(buyer_listing.id) %>"><img src="/assets/no_car_image.jpg" alt=""></a>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-7">
+											<div class="down-content">
+                      
+												<a href="<%= buyer_listing_path(buyer_listing.id) %>"><h4> <%= "#{buyer_listing.min_year} - #{buyer_listing.max_year} #{buyer_listing.make} #{buyer_listing.model} #{buyer_listing.trim}" %></h4></a>
+                         <div>Mileage: <b><%= buyer_listing.mileage %></b></div>
+												<span><%= "$#{number_with_delimiter(buyer_listing.min_price)} - $#{number_with_delimiter(buyer_listing.max_price)}" %></span>
+												<div class="line-dec"></div>
+                       
+												<p class="hidden">Drinking vinegar hoodie street art, selvage you probably haven't heard of them put a bird on it semiotics heirloom.</p>
+												<ul class="car-info mt-3">
+													<li><div class="item"><i class="flaticon flaticon-calendar"></i><p><%= "#{buyer_listing.min_year}" %></p></div></li>
+													<li><div class="item"><i class="flaticon flaticon-speed"></i><p>160p/h</p></div></li>
+													<li><div class="item"><i class="flaticon flaticon-road"></i><p>26.00km</p></div></li>
+													<li><div class="item"><i class="flaticon flaticon-fuel"></i><p>Petrol</p></div></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+<% end %>
+
+							
+							
+							<div class="col-md-12">
+								<div class="page-numbers">
+									<div class="pagination-content">
+                    <div class="digg_pagination">
+                      <%= will_paginate @buyer_listings %>
                     </div>
-                    <div class="icon_sub">
-                      <i class="fa fa-car" aria-hidden="true"></i>
-                    </div>
-                  </div> 
-                </div>
-              </div><div class="card_last_section align-center">
-          <%= link_to "View", buyer_listing_path(buyer_listing.id), method: :get, class: "no-underline relative inline-flex items-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+									</div>
+								</div>
+							</div>
 
-         </div></div>
-            </div>
-          </div>
-          
 
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+
+
+	<!-- Slider Pro Js -->
+	<script src="/assets/custom/js/sliderpro.min.js"></script>
+
+	<!-- Slick Slider Js -->
+	<script src="/assets/custom/js/slick.js"></script>
+
+	<!-- Owl Carousel Js -->
+    <script src="/assets/custom/js/owl.carousel.min.js"></script>
+
+	<!-- Boostrap Js -->
+    <script src="/assets/custom/js/bootstrap.min.js"></script>
+
+    <!-- Boostrap Js -->
+    <script src="/assets/custom/js/wow.animation.js"></script>
+
+	<!-- Custom Js -->
+    <script src="/assets/custom/js/custom.js"></script>
+
+    <style>
+.digg_pagination {
+  background: white;
+  cursor: default;
+  /* self-clearing method: */ }
+  .digg_pagination a, .digg_pagination span, .digg_pagination em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px; }
+  .digg_pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd; }
+  .digg_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #2e6ab1;
+    color: white;
+    border: 1px solid #2e6ab1; }
+  .digg_pagination a {
+    text-decoration: none;
+    color: #105cb6;
+    border: 1px solid #9aafe5; }
+    .digg_pagination a:hover, .digg_pagination a:focus {
+      color: #000033;
+      border-color: #000033; }
+  .digg_pagination .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+    .digg_pagination .page_info b {
+      color: #000033;
+      background: #6aa6ed;
+      padding: 0.1em 0.25em; }
+  .digg_pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  * html .digg_pagination {
+    height: 1%; }
+  *:first-child + html .digg_pagination {
+    overflow: hidden; 
+}
+    </style>
