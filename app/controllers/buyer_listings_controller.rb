@@ -6,6 +6,11 @@ class BuyerListingsController < ApplicationController
   def index
     if current_user&.role == "buyer"
       @buyer_listings = current_user.buyer_listings.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+      if params[:paged].present?
+        respond_to do |format|
+          format.js
+        end
+      end
     else
       redirect_to root_path
     end

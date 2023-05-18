@@ -84,79 +84,9 @@
 		 </div>
 	 </div>
 
-	<div class="on-listing wow fadeIn" data-wow-delay="0.5s" data-wow-duration="1s">
-		<div class="container">
-			<div class="recent-car-content">
-				<div class="row">
-
-           <% if notice.present? %>
-            <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-            <% end %>
-
-            <% if @buyer_listings.count == 0 %>
-              <div class="no_listings"> No Listing Found</div>
-            <% end %>
-
-					<div class="col-md-8">
-						<div class="row">
- <% @buyer_listings.each do |buyer_listing| %>
-							<div class="col-md-12">
-								<div class="car-item">
-									<div class="row">
-										<div class="col-md-5">
-											<div class="thumb-content">
-												
-												<div class="thumb-inner">
-
-													<a href="<%= buyer_listing_path(buyer_listing.id) %>"><img src="/assets/no_car_image.jpg" alt=""></a>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-7">
-											<div class="down-content">
-                      
-												<a href="<%= buyer_listing_path(buyer_listing.id) %>"><h4> <%= "#{buyer_listing.min_year} - #{buyer_listing.max_year} #{buyer_listing.make} #{buyer_listing.model} #{buyer_listing.trim}" %></h4></a>
-                         <div class="milage"><span>Mileage:</span> <b><%= buyer_listing.mileage %></b></div>
-												<span><%= "$#{number_with_delimiter(buyer_listing.min_price)} - $#{number_with_delimiter(buyer_listing.max_price)}" %></span>
-												<div class="line-dec"></div>
-                       
-												<p class="hidden">Drinking vinegar hoodie street art, selvage you probably haven't heard of them put a bird on it semiotics heirloom.</p>
-												<ul class="car-info mt-3">
-													<li><div class="item"><i class="flaticon flaticon-calendar"></i><p><%= "#{buyer_listing.min_year}" %></p></div></li>
-													<li><div class="item"><i class="flaticon flaticon-speed"></i><p>160p/h</p></div></li>
-													<li><div class="item"><i class="flaticon flaticon-road"></i><p>26.00km</p></div></li>
-													<li><div class="item"><i class="flaticon flaticon-fuel"></i><p>Petrol</p></div></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-<% end %>
-
-							
-							
-							<div class="col-md-12">
-								<div class="page-numbers">
-									<div class="pagination-content">
-                    <div class="digg_pagination">
-                      <%= will_paginate @buyer_listings %>
-                    </div>
-									</div>
-								</div>
-							</div>
-
-
-						</div>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-
-
+  <div class="buyer_listings_wrapper">
+    <%= render "/buyer_listings/buyer_listings_wrapper" %>
+  </div>
 	
 
 
@@ -228,3 +158,19 @@
     overflow: hidden; 
 }
     </style>
+
+<script>
+  $(document).on('click', '.pagination a', function(e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+
+    $.ajax({
+      url: url,
+      type: 'GET',
+      dataType: 'script',
+      success: function() {
+        
+      }
+    });
+  });
+</script>
