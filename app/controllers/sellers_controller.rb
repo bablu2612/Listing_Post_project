@@ -1,10 +1,13 @@
 class SellersController < ApplicationController
-  before_action :set_buyer_listing, only: %i[ show edit update destroy ]
+  before_action :set_buyer_listing, only: %i[ show edit update destroy offer_action ]
   skip_before_action :verify_authenticity_token
 
   # GET /buyer_listings or /buyer_listings.json
   def index
-    @buyer_listings = BuyerListing.all.joins(:seller_listings).where("seller_listings.user_id = #{current_user.id}").order(created_at: :desc)
+
+    @buyer_listings = current_user.buyer_listings.all.order(created_at: :desc)
+
+    # @buyer_listings = BuyerListing.all.joins(:seller_listings).where("seller_listings.user_id = #{current_user.id}").order(created_at: :desc)
   end
 
   # GET /buyer_listings/1 or /buyer_listings/1.json
@@ -23,7 +26,7 @@ class SellersController < ApplicationController
   # POST /buyer_listings or /buyer_listings.json
   def create
     @seller_listing = SellerListing.find_or_initialize_by(user_id: current_user.id)
-    @seller_listing.assign_attributes(year: params[:year], interior_color: params[:interior_color], exterior_color: params[:exterior_color], offered_price: params[:offered_price], buyer_listing_id: params[:buyer_listing_id])
+    @seller_listing.assign_attributes(year: params[:year],mileage: params[:mileage],trim: params[:trim],make: params[:make],model: params[:model], interior_color: params[:interior_color], exterior_color: params[:exterior_color], offered_price: params[:offered_price], buyer_listing_id: params[:buyer_listing_id])
     if params[:files].present?
       @seller_listing.assign_attributes(files: params[:files])
     end
@@ -50,6 +53,18 @@ class SellersController < ApplicationController
         format.json { render json: @buyer_listing.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def offer_action
+    
+
+    @seller_listing= SellerListing.find(params[:id])
+    @seller_listing.is_accepted = params[:value] == 'true' ? true : false
+    @seller_listing.save
+
+
+    render json: {status: 200,message: "sucessfully updated",data: @seller_listing}
+
   end
 
   # DELETE /buyer_listings/1 or /buyer_listings/1.json

@@ -109,7 +109,7 @@
                     <span> Departure:</span>  <%= buyer_listing.departure %> 
                   </div>
                    <div class="price_main mt-2">
-                    <%= "$#{buyer_listing.min_price} - $#{buyer_listing.max_price}" %>
+                    <%= "$#{number_with_delimiter(buyer_listing.min_price)} - $#{number_with_delimiter(buyer_listing.max_price)}" %>
                   </div>
                 </div>
               </div>

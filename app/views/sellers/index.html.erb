@@ -54,11 +54,11 @@
 <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6 w-full">
   <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
     <div class="ml-4 mt-2">
-      <h2 class="text-base font-semibold leading-6 text-gray-900"><%= current_user.role=="seller" || current_user.role=="admin" ? "Cars Listings" : "Your Listings" %></h2>
+      <h2 class="text-base font-semibold leading-6 text-gray-900"><%= current_user&.role=="seller" || current_user&.role=="admin" ? "Cars Listings" : "Your Listings" %></h2>
     </div>
     <div class="ml-4 mt-2 flex-shrink-0">
 
-      <button type="button" class=" hidden relative inline-flex items-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create new Listing</button>
+    <%= link_to "Create new Listing", new_buyer_listing_path, method: :get, class: "no-underline relative inline-flex items-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
     </div>
   </div>
 </div>
@@ -93,7 +93,7 @@
                     <span> Model:</span>  <%= buyer_listing.model %> 
                   </div>
                    <div class="price_main mt-2">
-                    <%= "$#{buyer_listing.min_price} - $#{buyer_listing.max_price}" %>
+                    <%= "$#{number_with_delimiter(buyer_listing.min_price)} - $#{number_with_delimiter(buyer_listing.max_price)}" %>
                   </div>
                 </div>
               </div>
